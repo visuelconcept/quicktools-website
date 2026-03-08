@@ -83,6 +83,18 @@
                 <a href="mailto:contact@visuelconcept.fr" class="btn btn-primary" style="width: 100%;">Contact us</a>
             </div>
         </div>
+        <div class="cryptlex-banner">
+            <div class="cryptlex-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L4 6v6c0 5.25 3.4 10.15 8 11.25C16.6 22.15 20 17.25 20 12V6l-8-4z" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1.5"/>
+                    <path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="cryptlex-content">
+                <h3>License management by <a href="https://cryptlex.com" target="_blank" rel="noopener">Cryptlex</a></h3>
+                <p>Cryptlex is a secure cloud-based software license management platform. It handles activation, validation and tracking of QuickTOOLS licenses, with support for both online and offline activation. License data is stored in the Windows registry &mdash; no license file is needed.</p>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -92,17 +104,31 @@
         <h2 class="section-title">Download</h2>
         <p class="section-subtitle">Choose the architecture matching your system.</p>
         <div class="download-grid">
-            <div class="download-card">
-                <h3>QuickTOOLS 2.80 &mdash; x64</h3>
+            <div class="download-card" id="dl-x64">
+                <h3>QuickTOOLS 2.80 &mdash; 64-bit</h3>
                 <p>For Windows 10/11 64-bit.<br>Includes QuickSERVER, QuickSDB, DbEngine, libraries and documentation.</p>
-                <a href="../downloads/QuickSERVER-2.80-win64.exe" class="btn btn-primary">Download x64</a>
+                <a href="../downloads/QuickSERVER-2.80-win64.exe" class="btn btn-primary">Download 64-bit</a>
             </div>
-            <div class="download-card">
-                <h3>QuickTOOLS 2.80 &mdash; x86</h3>
+            <div class="download-card" id="dl-x86">
+                <h3>QuickTOOLS 2.80 &mdash; 32-bit</h3>
                 <p>For Windows 10/11 32-bit.<br>Includes QuickSERVER, QuickSDB, DbEngine, libraries and documentation.</p>
-                <a href="../downloads/QuickSERVER-2.80-win32.exe" class="btn btn-primary">Download x86</a>
+                <a href="../downloads/QuickSERVER-2.80-win32.exe" class="btn btn-primary">Download 32-bit</a>
             </div>
         </div>
+        <script>
+        (function() {
+            var is64 = /Win64|WOW64|x86_64|x86-64|x64|amd64/i.test(navigator.userAgent);
+            var card = document.getElementById(is64 ? 'dl-x64' : 'dl-x86');
+            if (card) {
+                card.classList.add('recommended');
+                var h3 = card.querySelector('h3');
+                var badge = document.createElement('span');
+                badge.className = 'badge-recommended';
+                badge.textContent = 'Recommended';
+                h3.appendChild(badge);
+            }
+        })();
+        </script>
 
         <div class="info-box">
             <h3>Requirements</h3>
