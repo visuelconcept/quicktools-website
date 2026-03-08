@@ -545,6 +545,11 @@ img, svg {
 
 /* ---- Code Block ---- */
 
+pre.code-block {
+    white-space: pre;
+    word-wrap: normal;
+}
+
 .code-block {
     background: var(--color-bg-darker);
     color: #e2e8f0;
@@ -555,6 +560,15 @@ img, svg {
     font-size: 0.9rem;
     line-height: 1.7;
     margin: 1.5rem 0;
+}
+
+.code-block code {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    padding: 0;
+    white-space: pre;
 }
 
 .code-block .keyword { color: #c792ea; }
@@ -903,7 +917,7 @@ img, svg {
     color: var(--color-text-light);
 }
 
-.step-content code {
+.step-content code:not(.cmd-block) {
     background: var(--color-gray-light);
     padding: 0.15rem 0.4rem;
     border-radius: 4px;
