@@ -1084,8 +1084,8 @@ img, svg {
     .td-diagram { padding: 1.5rem 0 0.5rem; max-width: 100%; }
     .td-clients { flex-direction: column; align-items: center; gap: 0.5rem; }
     .td-node { font-size: 0.75rem; padding: 0.4rem 0.6rem; width: auto; min-width: 160px; justify-content: center; }
-    .td-wires { display: none; }
-    .td-infra { padding: 1rem 1rem; max-width: 100%; width: auto; margin: 0.5rem 0; }
+    .td-wires { height: 20px; width: 50%; margin: 0.25rem auto; opacity: 0.6; }
+    .td-infra { padding: 1rem 1rem; max-width: 100%; width: auto; margin: 0; }
     .td-brokers { flex-direction: column; gap: 0.5rem; }
     .td-broker { font-size: 0.75rem; padding: 0.4rem 0.75rem; justify-content: center; }
     .td-sync { flex-direction: row; gap: 0.4rem; }
