@@ -786,6 +786,23 @@ pre.code-block {
     margin-bottom: 1.25rem;
 }
 
+.download-card.recommended {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.download-card .badge-recommended {
+    display: inline-block;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
 /* ---- Page Header (inner pages) ---- */
 
 .page-header {

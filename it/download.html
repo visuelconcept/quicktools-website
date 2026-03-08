@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download &amp; Prezzi &mdash; QuickTOOLS 2.80</title>
+    <meta name="description" content="Scaricate QuickTOOLS 2.80 e scoprite i nostri piani di licenza.">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/QuickSERVER.svg">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">
+            <img src="../assets/logo.png" alt="Visuel Concept">
+            QuickTOOLS
+        </a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label"><span></span></label>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="features.html">Funzionalit&agrave;</a></li>
+            <li><a href="documentation.html">Documentazione</a></li>
+            <li><a href="download.html" class="active">Download</a></li>
+            <li class="lang-switcher">
+                <a href="../download.html">FR</a>
+                <a href="../en/download.html">EN</a>
+                <a href="../de/download.html">DE</a>
+                <a href="download.html" class="active">IT</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="page-header">
+    <h1>Download &amp; Prezzi</h1>
+    <p>Scegliete il piano adatto alle vostre esigenze e scaricate QuickTOOLS 2.80.</p>
+</section>
+
+<!-- Pricing -->
+<section class="section section-alt" id="pricing">
+    <div class="section-inner">
+        <h2 class="section-title">Piani di licenza</h2>
+        <p class="section-subtitle">Tutte le licenze includono QuickSERVER e QuickSDB. Attivazione tramite Cryptlex.</p>
+        <div class="pricing">
+            <div class="pricing-card">
+                <h3>Prova gratuita</h3>
+                <div class="pricing-price">Gratuito</div>
+                <ul class="pricing-features">
+                    <li>Accesso completo a tutte le funzionalit&agrave;</li>
+                    <li>2 ore per sessione di esecuzione</li>
+                    <li>Validit&agrave; offline di 90 giorni</li>
+                    <li>Attivazione automatica al primo avvio</li>
+                    <li>Nessuna carta di credito richiesta</li>
+                </ul>
+                <a href="#download" class="btn btn-primary" style="width: 100%;">Scarica</a>
+            </div>
+            <div class="pricing-card featured">
+                <h3>Licenza perpetua</h3>
+                <div class="pricing-price">Contattateci</div>
+                <ul class="pricing-features">
+                    <li>Accesso completo illimitato</li>
+                    <li>Nessun limite di tempo</li>
+                    <li>Acquisto una tantum</li>
+                    <li>Supporto tecnico incluso</li>
+                    <li>Aggiornamenti minori inclusi</li>
+                </ul>
+                <a href="mailto:contact@visuelconcept.fr" class="btn btn-primary" style="width: 100%;">Contattateci</a>
+            </div>
+            <div class="pricing-card">
+                <h3>Abbonamento</h3>
+                <div class="pricing-price">Contattateci</div>
+                <ul class="pricing-features">
+                    <li>Accesso completo illimitato</li>
+                    <li>Rinnovo annuale</li>
+                    <li>Tutti gli aggiornamenti inclusi</li>
+                    <li>Supporto tecnico prioritario</li>
+                    <li>Sconto volume disponibile</li>
+                </ul>
+                <a href="mailto:contact@visuelconcept.fr" class="btn btn-primary" style="width: 100%;">Contattateci</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Download -->
+<section class="section" id="download">
+    <div class="section-inner">
+        <h2 class="section-title">Download</h2>
+        <p class="section-subtitle">Scegliete l'architettura corrispondente al vostro sistema.</p>
+        <div class="download-grid">
+            <div class="download-card" id="dl-x64">
+                <h3>QuickTOOLS 2.80 &mdash; x64</h3>
+                <p>Per Windows 10/11 64 bit.<br>Include QuickSERVER, QuickSDB, DbEngine, librerie e documentazione.</p>
+                <a href="../downloads/QuickSERVER-2.80-win64.exe" class="btn btn-primary">Scarica x64</a>
+            </div>
+            <div class="download-card" id="dl-x86">
+                <h3>QuickTOOLS 2.80 &mdash; x86</h3>
+                <p>Per Windows 10/11 32 bit.<br>Include QuickSERVER, QuickSDB, DbEngine, librerie e documentazione.</p>
+                <a href="../downloads/QuickSERVER-2.80-win32.exe" class="btn btn-primary">Scarica x86</a>
+            </div>
+        </div>
+        <script>
+        (function() {
+            var is64 = /Win64|WOW64|x86_64|x86-64|x64|amd64/i.test(navigator.userAgent);
+            var card = document.getElementById(is64 ? 'dl-x64' : 'dl-x86');
+            if (card) {
+                card.classList.add('recommended');
+                var h3 = card.querySelector('h3');
+                var badge = document.createElement('span');
+                badge.className = 'badge-recommended';
+                badge.textContent = 'Consigliato';
+                h3.appendChild(badge);
+            }
+        })();
+        </script>
+
+        <div class="info-box">
+            <h3>Prerequisiti</h3>
+            <ul style="list-style: disc; padding-left: 1.5rem;">
+                <li>Windows 10 o Windows 11</li>
+                <li>Visual Studio 2015 o successivo (per lo sviluppo)</li>
+                <li>Connessione internet per l'attivazione della licenza (attivazione offline disponibile)</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Activation -->
+<section class="section section-alt">
+    <div class="section-inner">
+        <h2 class="section-title">Attivazione della licenza</h2>
+        <p class="section-subtitle">Attivate la vostra licenza in pochi semplici passaggi con QuickActivator.</p>
+        <div class="steps">
+            <div class="step">
+                <div class="step-content">
+                    <h4>Installare QuickTOOLS</h4>
+                    <p>Eseguite il programma di installazione e seguite le istruzioni. Il programma di installazione propone automaticamente l'attivazione di una prova gratuita.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-content">
+                    <h4>Attivare una prova (automatica)</h4>
+                    <p>Al primo avvio, una licenza di prova viene attivata automaticamente. Potete anche avviare manualmente:</p>
+                    <code class="cmd-block">QuickActivator.exe trial</code>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-content">
+                    <h4>Attivare una licenza completa</h4>
+                    <p>Una volta ricevuta la chiave di licenza, attivatela con:</p>
+                    <code class="cmd-block">QuickActivator.exe activate VOSTRA-CHIAVE-DI-LICENZA</code>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-content">
+                    <h4>Verificare lo stato</h4>
+                    <p>Controllate lo stato della vostra licenza in qualsiasi momento con:</p>
+                    <code class="cmd-block">QuickActivator.exe status</code>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h3>Attivazione offline</h3>
+            <p>Per ambienti senza accesso a internet, QuickTOOLS supporta l'attivazione offline:</p>
+            <ol>
+                <li>Generate un file di richiesta:
+                    <code class="cmd-block">QuickActivator.exe offline-activate-request</code>
+                </li>
+                <li>Trasferite questo file su un computer con accesso a internet.</li>
+                <li>Applicate la risposta:
+                    <code class="cmd-block">QuickActivator.exe offline-activate-response</code>
+                </li>
+            </ol>
+            <p>Consultate la <a href="../docs/index.html">documentazione completa</a> per i dettagli.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <h3>QuickTOOLS</h3>
+            <p>Sviluppato da Visuel Concept SAS dal 1994.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Prodotto</h4>
+            <ul>
+                <li><a href="features.html">Funzionalit&agrave;</a></li>
+                <li><a href="download.html">Download</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4>Risorse</h4>
+            <ul>
+                <li><a href="documentation.html">Documentazione</a></li>
+                <li><a href="../docs/QUICKSTART.html">Avvio rapido</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Visuel Concept SAS. Tutti i diritti riservati.
+    </div>
+</footer>
+
+</body>
+</html>

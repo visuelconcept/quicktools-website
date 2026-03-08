@@ -27,6 +27,8 @@
             <li class="lang-switcher">
                 <a href="download.html" class="active">FR</a>
                 <a href="en/download.html">EN</a>
+                <a href="de/download.html">DE</a>
+                <a href="it/download.html">IT</a>
             </li>
         </ul>
     </div>
@@ -90,17 +92,31 @@
         <h2 class="section-title">T&eacute;l&eacute;chargement</h2>
         <p class="section-subtitle">Choisissez l'architecture correspondant &agrave; votre syst&egrave;me.</p>
         <div class="download-grid">
-            <div class="download-card">
+            <div class="download-card" id="dl-x64">
                 <h3>QuickTOOLS 2.80 &mdash; x64</h3>
                 <p>Pour Windows 10/11 64 bits.<br>Inclut QuickSERVER, QuickSDB, DbEngine, librairies et documentation.</p>
                 <a href="downloads/QuickSERVER-2.80-win64.exe" class="btn btn-primary">T&eacute;l&eacute;charger x64</a>
             </div>
-            <div class="download-card">
+            <div class="download-card" id="dl-x86">
                 <h3>QuickTOOLS 2.80 &mdash; x86</h3>
                 <p>Pour Windows 10/11 32 bits.<br>Inclut QuickSERVER, QuickSDB, DbEngine, librairies et documentation.</p>
                 <a href="downloads/QuickSERVER-2.80-win32.exe" class="btn btn-primary">T&eacute;l&eacute;charger x86</a>
             </div>
         </div>
+        <script>
+        (function() {
+            var is64 = /Win64|WOW64|x86_64|x86-64|x64|amd64/i.test(navigator.userAgent);
+            var card = document.getElementById(is64 ? 'dl-x64' : 'dl-x86');
+            if (card) {
+                card.classList.add('recommended');
+                var h3 = card.querySelector('h3');
+                var badge = document.createElement('span');
+                badge.className = 'badge-recommended';
+                badge.textContent = 'Recommand\u00e9';
+                h3.appendChild(badge);
+            }
+        })();
+        </script>
 
         <div class="info-box">
             <h3>Pr&eacute;requis</h3>

@@ -7,6 +7,25 @@
     <meta name="description" content="QuickTOOLS : message broker, base de donn&eacute;es partag&eacute;e et abstraction SQL pour Windows. Par Visuel Concept SAS, depuis 1994.">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/svg+xml" href="assets/QuickSERVER.svg">
+    <script>
+    (function() {
+        if (sessionStorage.getItem('qt_lang_chosen')) return;
+        var lang = navigator.language || navigator.userLanguage || '';
+        var l = lang.toLowerCase().substring(0, 2);
+        if (l === 'fr') {
+            sessionStorage.setItem('qt_lang_chosen', 'fr');
+        } else if (l === 'de') {
+            sessionStorage.setItem('qt_lang_chosen', 'de');
+            window.location.replace('de/index.html');
+        } else if (l === 'it') {
+            sessionStorage.setItem('qt_lang_chosen', 'it');
+            window.location.replace('it/index.html');
+        } else {
+            sessionStorage.setItem('qt_lang_chosen', 'en');
+            window.location.replace('en/index.html');
+        }
+    })();
+    </script>
 </head>
 <body>
 
@@ -27,6 +46,8 @@
             <li class="lang-switcher">
                 <a href="index.html" class="active">FR</a>
                 <a href="en/index.html">EN</a>
+                <a href="de/index.html">DE</a>
+                <a href="it/index.html">IT</a>
             </li>
         </ul>
     </div>
@@ -61,8 +82,8 @@
             <div class="stat-label">langages (C, C++, Java)</div>
         </div>
         <div class="stat">
-            <div class="stat-number">x86/x64</div>
-            <div class="stat-label">architectures natives</div>
+            <div class="stat-number">32 / 64 bits</div>
+            <div class="stat-label">support natif Windows</div>
         </div>
     </div>
 </section>
