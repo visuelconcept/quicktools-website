@@ -189,7 +189,7 @@
         <div class="feature-section">
             <h2 style="font-size: 1.8rem; color: #1E4068; margin-bottom: 1rem;">Code example</h2>
             <p style="margin-bottom: 1rem; color: #666;">Sending and receiving a message with QuickSERVER in C:</p>
-            <pre class="code-block"><code><span class="comment">/* Send a message */</span>
+            <div class="code-block"><span class="comment">/* Send a message */</span>
 <span class="type">T_DATAGROUP</span> dg = <span class="function">QT_SocketJoinDG</span>(sock, <span class="string">"PRODUCTION"</span>);
 
 <span class="type">T_MSG</span> msg;
@@ -204,7 +204,7 @@
 <span class="keyword">if</span> (<span class="function">QT_SocketReadMsg</span>(sock, &amp;msg, 5000) == QT_OK) {
     <span class="type">long</span> id   = <span class="function">QT_SocketGetLong</span>(&amp;msg, <span class="string">"sensor_id"</span>);
     <span class="type">double</span> temp = <span class="function">QT_SocketGetDouble</span>(&amp;msg, <span class="string">"temperature"</span>);
-}</code></pre>
+}</div>
         </div>
 
         <!-- Types Table -->
@@ -254,7 +254,7 @@
             <h4>Resources</h4>
             <ul>
                 <li><a href="documentation.html">Documentation</a></li>
-                <li><a href="../docs/QUICKSTART.html">Quick start</a></li>
+                <li><a href="../docs/en/QUICKSTART.html">Quick start</a></li>
             </ul>
         </div>
     </div>

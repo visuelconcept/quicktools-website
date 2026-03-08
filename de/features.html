@@ -189,21 +189,25 @@
         <div class="feature-section">
             <h2 style="font-size: 1.8rem; color: #1E4068; margin-bottom: 1rem;">Codebeispiel</h2>
             <p style="margin-bottom: 1rem; color: #666;">Senden und Empfangen einer Nachricht mit QuickSERVER in C:</p>
-            <pre class="code-block"><code><span class="comment">/* Nachricht senden */</span>
-<span class="type">T_DATAGROUP</span> dg = <span class="function">QT_SocketJoinDG</span>(sock, <span class="string">"PRODUCTION"</span>);
+            <pre class="code-block"><code><span class="comment">/* Verbindung und Abonnement */</span>
+<span class="function">QT_SocketInit</span>(<span class="string">"localhost"</span>, <span class="string">"MEIN_CLIENT"</span>, C_AUTO_RECONNECTION);
+<span class="type">T_DATAGROUP</span> dg = <span class="function">QT_SocketJoinDG</span>(<span class="string">"PRODUCTION"</span>);
 
-<span class="type">T_MSG</span> msg;
-<span class="function">QT_SocketInitMsg</span>(&amp;msg);
-<span class="function">QT_SocketPutLong</span>(&amp;msg, <span class="string">"sensor_id"</span>, 42);
-<span class="function">QT_SocketPutDouble</span>(&amp;msg, <span class="string">"temperature"</span>, 23.5);
-<span class="function">QT_SocketPutString</span>(&amp;msg, <span class="string">"status"</span>, <span class="string">"OK"</span>);
-
-<span class="function">QT_SocketSendMsg</span>(sock, dg, &amp;msg);
+<span class="comment">/* Nachricht senden */</span>
+<span class="type">T_MESSAGE</span> msg;
+<span class="function">QT_SocketInitHeader</span>(&amp;msg.Header);
+<span class="function">QT_SocketWriteMsgLong</span>(&amp;msg, 42);
+<span class="function">QT_SocketWriteMsgDouble</span>(&amp;msg, 23.5);
+<span class="function">QT_SocketWriteMsgString</span>(&amp;msg, <span class="string">"OK"</span>);
+<span class="function">QT_SocketSendMsg</span>(&amp;msg, dg);
 
 <span class="comment">/* Empfangen */</span>
-<span class="keyword">if</span> (<span class="function">QT_SocketReadMsg</span>(sock, &amp;msg, 5000) == QT_OK) {
-    <span class="type">long</span> id   = <span class="function">QT_SocketGetLong</span>(&amp;msg, <span class="string">"sensor_id"</span>);
-    <span class="type">double</span> temp = <span class="function">QT_SocketGetDouble</span>(&amp;msg, <span class="string">"temperature"</span>);
+<span class="type">T_MESSAGE</span> *recv = <span class="function">QT_SocketWaitMsg</span>(C_MESSAGE_USER, 5);
+<span class="keyword">if</span> (recv) {
+    <span class="type">long</span> id; <span class="type">double</span> temp;
+    <span class="function">QT_SocketReadMsgLong</span>(recv, &amp;id);
+    <span class="function">QT_SocketReadMsgDouble</span>(recv, &amp;temp);
+    <span class="function">QT_SocketDestroyMsg</span>(recv);
 }</code></pre>
         </div>
 
@@ -220,11 +224,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Kurze Ganzzahl</td><td>PutShort / GetShort</td><td>Short</td></tr>
-                        <tr><td>Lange Ganzzahl</td><td>PutLong / GetLong</td><td>Long</td></tr>
-                        <tr><td>Einfache Gleitkommazahl</td><td>PutFloat / GetFloat</td><td>Float</td></tr>
-                        <tr><td>Doppelte Gleitkommazahl</td><td>PutDouble / GetDouble</td><td>Double</td></tr>
-                        <tr><td>Zeichenkette</td><td>PutString / GetString</td><td>String</td></tr>
+                        <tr><td>Kurze Ganzzahl</td><td>WriteMsgShort / ReadMsgShort</td><td>Short</td></tr>
+                        <tr><td>Lange Ganzzahl</td><td>WriteMsgLong / ReadMsgLong</td><td>Long</td></tr>
+                        <tr><td>Einfache Gleitkommazahl</td><td>WriteMsgFloat / ReadMsgFloat</td><td>Float</td></tr>
+                        <tr><td>Doppelte Gleitkommazahl</td><td>WriteMsgDouble / ReadMsgDouble</td><td>Double</td></tr>
+                        <tr><td>Zeichenkette</td><td>WriteMsgString / ReadMsgString</td><td>String</td></tr>
                         <tr><td>Boolean</td><td>&mdash;</td><td>Boolean</td></tr>
                         <tr><td>Datum / Zeit</td><td>&mdash;</td><td>Date, Time, Delay</td></tr>
                         <tr><td>Objekt</td><td>&mdash;</td><td>Object (mit Klassen)</td></tr>
@@ -254,7 +258,7 @@
             <h4>Ressourcen</h4>
             <ul>
                 <li><a href="documentation.html">Dokumentation</a></li>
-                <li><a href="../docs/QUICKSTART.html">Schnellstart</a></li>
+                <li><a href="../docs/en/QUICKSTART.html">Schnellstart</a></li>
             </ul>
         </div>
     </div>
