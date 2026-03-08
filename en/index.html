@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickTOOLS 2.80 — High-Performance Middleware for Windows</title>
+    <meta name="description" content="QuickTOOLS: message broker, shared database and multi-engine SQL abstraction for Windows. By Visuel Concept SAS, since 1994.">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/QuickSERVER.svg">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="../en/index.html" class="nav-brand">
+            <img src="../assets/logo.png" alt="Visuel Concept">
+            QuickTOOLS
+        </a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label"><span></span></label>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="download.html">Download</a></li>
+            <li class="lang-switcher">
+                <a href="../index.html">FR</a>
+                <a href="index.html" class="active">EN</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>QuickTOOLS</h1>
+        <span class="version">Version 2.80</span>
+        <p>High-performance middleware for Windows &mdash; message broker, shared database and multi-engine SQL abstraction.</p>
+        <div class="hero-buttons">
+            <a href="download.html" class="btn btn-primary">Download</a>
+            <a href="documentation.html" class="btn btn-outline">Documentation</a>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Banner -->
+<section class="stats">
+    <div class="stats-inner">
+        <div class="stat">
+            <div class="stat-number">30+</div>
+            <div class="stat-label">years of expertise</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">6</div>
+            <div class="stat-label">supported databases</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">3</div>
+            <div class="stat-label">languages (C, C++, Java)</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">x86/x64</div>
+            <div class="stat-label">native architectures</div>
+        </div>
+    </div>
+</section>
+
+<!-- 3 Pillars -->
+<section class="section section-alt">
+    <div class="section-inner">
+        <h2 class="section-title">Three pillars, one solution</h2>
+        <p class="section-subtitle">QuickTOOLS brings together three complementary components for communication, synchronization and persistence.</p>
+        <div class="cards">
+            <div class="card">
+                <img src="../assets/QuickSERVER.svg" alt="QuickSERVER" class="card-icon">
+                <h3>QuickSERVER</h3>
+                <p>Publish/subscribe message broker for real-time communication between applications.</p>
+                <ul>
+                    <li>Datagroups for message routing</li>
+                    <li>Compression and load balancing</li>
+                    <li>Typed messages with binary serialization</li>
+                    <li>Built-in HTTP dashboard</li>
+                    <li>Automatic client reconnection</li>
+                </ul>
+                <a href="features.html#quickserver" class="card-link">Learn more &rarr;</a>
+            </div>
+            <div class="card">
+                <img src="../assets/QuickSDB.svg" alt="QuickSDB" class="card-icon">
+                <h3>QuickSDB</h3>
+                <p>Real-time shared database with transparent synchronization across all clients.</p>
+                <ul>
+                    <li>Synchronized typed variables</li>
+                    <li>Object model with classes and inheritance</li>
+                    <li>Computed algebraic formulas</li>
+                    <li>Disk persistence</li>
+                    <li>Transaction support</li>
+                </ul>
+                <a href="features.html#quicksdb" class="card-link">Learn more &rarr;</a>
+            </div>
+            <div class="card">
+                <img src="../assets/QuickSERVER.svg" alt="DbEngine" class="card-icon">
+                <h3>DbEngine</h3>
+                <p>Unified SQL abstraction layer for 6 database engines.</p>
+                <ul>
+                    <li>SQLite (embedded, default)</li>
+                    <li>MySQL and PostgreSQL</li>
+                    <li>Oracle and MS SQL Server</li>
+                    <li>Sybase</li>
+                    <li>Switch engines without recompilation</li>
+                </ul>
+                <a href="features.html#dbengine" class="card-link">Learn more &rarr;</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Architecture -->
+<section class="section">
+    <div class="section-inner">
+        <h2 class="section-title">Modular architecture</h2>
+        <p class="section-subtitle">A layered design that cleanly separates concerns and simplifies integration.</p>
+        <div class="architecture">
+            <div class="arch-layer">
+                <div class="arch-layer-title">Applications</div>
+                <div class="arch-layer-desc">C / C++ / Java</div>
+            </div>
+            <div class="arch-arrow">&darr;</div>
+            <div class="arch-layer" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 120px;">
+                    <div class="arch-layer-title">SERVER</div>
+                    <div class="arch-layer-desc">network</div>
+                </div>
+                <div style="flex: 1; min-width: 120px;">
+                    <div class="arch-layer-title">SDB</div>
+                    <div class="arch-layer-desc">data</div>
+                </div>
+                <div style="flex: 1; min-width: 120px;">
+                    <div class="arch-layer-title">DbEngine</div>
+                    <div class="arch-layer-desc">SQL</div>
+                </div>
+            </div>
+            <div class="arch-arrow">&darr;</div>
+            <div class="arch-layer">
+                <div class="arch-layer-title">UTIL</div>
+                <div class="arch-layer-desc">memory, strings, dates, compression, data structures, I/O</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Use Cases -->
+<section class="section section-alt">
+    <div class="section-inner">
+        <h2 class="section-title">Use cases</h2>
+        <p class="section-subtitle">QuickTOOLS adapts to a wide range of industrial and professional domains.</p>
+        <div class="usecases">
+            <div class="usecase">
+                <div class="usecase-icon">&#9881;</div>
+                <div>
+                    <h4>Industrial control</h4>
+                    <p>Real-time messaging for SCADA systems and operator interfaces (HMI).</p>
+                </div>
+            </div>
+            <div class="usecase">
+                <div class="usecase-icon">&#9733;</div>
+                <div>
+                    <h4>Financial systems</h4>
+                    <p>Low-latency data synchronization across trading floors.</p>
+                </div>
+            </div>
+            <div class="usecase">
+                <div class="usecase-icon">&#9889;</div>
+                <div>
+                    <h4>Energy management</h4>
+                    <p>Remote monitoring and control of energy equipment.</p>
+                </div>
+            </div>
+            <div class="usecase">
+                <div class="usecase-icon">&#9878;</div>
+                <div>
+                    <h4>Manufacturing</h4>
+                    <p>Production line coordination through shared database.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <h3>QuickTOOLS</h3>
+            <p>Developed by Visuel Concept SAS since 1994. Professional middleware for Windows.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Product</h4>
+            <ul>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="download.html">Download</a></li>
+                <li><a href="download.html#pricing">Pricing</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4>Resources</h4>
+            <ul>
+                <li><a href="documentation.html">Documentation</a></li>
+                <li><a href="../docs/QUICKSTART.html">Quick start</a></li>
+                <li><a href="../docs/COMPILATION.html">Compilation</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4>Components</h4>
+            <ul>
+                <li><a href="../docs/SERVER.html">QuickSERVER</a></li>
+                <li><a href="../docs/SDB.html">QuickSDB</a></li>
+                <li><a href="../docs/DbEngine.html">DbEngine</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Visuel Concept SAS. All rights reserved.
+    </div>
+</footer>
+
+</body>
+</html>

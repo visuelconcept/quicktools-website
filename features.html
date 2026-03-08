@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonctionnalit&eacute;s — QuickTOOLS 2.80</title>
+    <meta name="description" content="D&eacute;couvrez les fonctionnalit&eacute;s de QuickSERVER, QuickSDB et DbEngine.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/QuickSERVER.svg">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">
+            <img src="assets/logo.png" alt="Visuel Concept">
+            QuickTOOLS
+        </a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label"><span></span></label>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="features.html" class="active">Fonctionnalit&eacute;s</a></li>
+            <li><a href="documentation.html">Documentation</a></li>
+            <li><a href="download.html">T&eacute;l&eacute;chargement</a></li>
+            <li class="lang-switcher">
+                <a href="features.html" class="active">FR</a>
+                <a href="en/features.html">EN</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="page-header">
+    <h1>Fonctionnalit&eacute;s</h1>
+    <p>Trois composants compl&eacute;mentaires pour la communication, la synchronisation et la persistance de donn&eacute;es.</p>
+</section>
+
+<div class="section section-alt">
+    <div class="section-inner">
+
+        <!-- QuickSERVER -->
+        <div class="feature-section" id="quickserver">
+            <div class="feature-header">
+                <img src="assets/QuickSERVER.svg" alt="QuickSERVER">
+                <h2>QuickSERVER &mdash; Message Broker</h2>
+            </div>
+            <p style="margin-bottom: 1.5rem; color: #666;">Syst&egrave;me de messagerie publish/subscribe pour la communication temps r&eacute;el entre applications distribu&eacute;es.</p>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>Datagroups</h4>
+                    <p>Routage des messages par groupes nomm&eacute;s. Les clients s'abonnent aux groupes qui les int&eacute;ressent pour un couplage l&acirc;che.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Messages typ&eacute;s</h4>
+                    <p>S&eacute;rialisation binaire automatique de types natifs : char, short, long, float, double, string. Compatible entre architectures.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Compression</h4>
+                    <p>Compression transparente des messages pour optimiser la bande passante r&eacute;seau.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Load balancing</h4>
+                    <p>Distribution de charge avec strat&eacute;gies multiples : round-robin, pond&eacute;r&eacute;, best-effort, destinataire unique ou broadcast.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Timer &amp; messages p&eacute;riodiques</h4>
+                    <p>QuickTIMER permet la propagation d'&eacute;v&eacute;nements planifi&eacute;s &agrave; intervalle r&eacute;gulier.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Dashboard HTTP</h4>
+                    <p>Interface web int&eacute;gr&eacute;e (port 1251) pour le monitoring en temps r&eacute;el du serveur.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Acquittement de messages</h4>
+                    <p>Confirmation de r&eacute;ception avec timeouts configurables et livraison garantie.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Reconnexion automatique</h4>
+                    <p>Modes de reconnexion : manuel, automatique ou contextuel, pour une r&eacute;silience maximale.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Interconnexion serveurs</h4>
+                    <p>Mode routeur pour architectures distribu&eacute;es multi-sites avec propagation de messages inter-serveurs.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- QuickSDB -->
+        <div class="feature-section" id="quicksdb">
+            <div class="feature-header">
+                <img src="assets/QuickSDB.svg" alt="QuickSDB">
+                <h2>QuickSDB &mdash; Base de donn&eacute;es partag&eacute;e</h2>
+            </div>
+            <p style="margin-bottom: 1.5rem; color: #666;">Syst&egrave;me de variables partag&eacute;es en temps r&eacute;el, synchronis&eacute;es automatiquement entre tous les clients connect&eacute;s.</p>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>Variables typ&eacute;es</h4>
+                    <p>Bool&eacute;en, byte, short, long, float, double, date, heure, d&eacute;lai, cha&icirc;ne, &eacute;num, objet et collection.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Synchronisation transparente</h4>
+                    <p>Toute modification est propag&eacute;e instantan&eacute;ment &agrave; tous les clients abonn&eacute;s.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Mod&egrave;le objet</h4>
+                    <p>D&eacute;finition de classes avec h&eacute;ritage et membres typ&eacute;s, pour une organisation structur&eacute;e des donn&eacute;es.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Formules alg&eacute;briques</h4>
+                    <p>Variables calcul&eacute;es automatiquement par des expressions if-then-else.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Persistance</h4>
+                    <p>Sauvegarde et chargement de l'&eacute;tat complet de la base sur disque.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Transactions</h4>
+                    <p>Support commit/rollback pour des modifications atomiques et coh&eacute;rentes.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Watch / Unwatch</h4>
+                    <p>Surveillance s&eacute;lective des variables par patterns pour un traitement &eacute;v&eacute;nementiel efficace.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Groupes de variables</h4>
+                    <p>Op&eacute;rations en lot et monitoring de groupes de variables li&eacute;es.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- DbEngine -->
+        <div class="feature-section" id="dbengine">
+            <div class="feature-header">
+                <img src="assets/QuickSERVER.svg" alt="DbEngine">
+                <h2>DbEngine &mdash; Abstraction SQL</h2>
+            </div>
+            <p style="margin-bottom: 1.5rem; color: #666;">API unifi&eacute;e pour 6 moteurs de bases de donn&eacute;es relationnelles. Changez de moteur sans modifier votre code.</p>
+            <div class="table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Moteur</th>
+                            <th>Type</th>
+                            <th>Usage typique</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>SQLite</strong></td>
+                            <td>Embarqu&eacute;</td>
+                            <td>Par d&eacute;faut, aucune installation requise</td>
+                        </tr>
+                        <tr>
+                            <td><strong>MySQL</strong></td>
+                            <td>Serveur</td>
+                            <td>Applications web et g&eacute;n&eacute;ralistes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PostgreSQL</strong></td>
+                            <td>Serveur</td>
+                            <td>Requ&ecirc;tes complexes, conformit&eacute; SQL</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Oracle</strong></td>
+                            <td>Enterprise</td>
+                            <td>Grands syst&egrave;mes, haute disponibilit&eacute;</td>
+                        </tr>
+                        <tr>
+                            <td><strong>MS SQL Server</strong></td>
+                            <td>Enterprise</td>
+                            <td>&Eacute;cosyst&egrave;me Microsoft</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sybase</strong></td>
+                            <td>Enterprise</td>
+                            <td>Syst&egrave;mes h&eacute;rit&eacute;s, finance</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Code Example -->
+        <div class="feature-section">
+            <h2 style="font-size: 1.8rem; color: #1E4068; margin-bottom: 1rem;">Exemple de code</h2>
+            <p style="margin-bottom: 1rem; color: #666;">Envoi et r&eacute;ception d'un message avec QuickSERVER en C :</p>
+            <div class="code-block"><span class="comment">/* Envoi d'un message */</span>
+<span class="type">T_DATAGROUP</span> dg = <span class="function">QT_SocketJoinDG</span>(sock, <span class="string">"PRODUCTION"</span>);
+
+<span class="type">T_MSG</span> msg;
+<span class="function">QT_SocketInitMsg</span>(&amp;msg);
+<span class="function">QT_SocketPutLong</span>(&amp;msg, <span class="string">"capteur_id"</span>, 42);
+<span class="function">QT_SocketPutDouble</span>(&amp;msg, <span class="string">"temperature"</span>, 23.5);
+<span class="function">QT_SocketPutString</span>(&amp;msg, <span class="string">"status"</span>, <span class="string">"OK"</span>);
+
+<span class="function">QT_SocketSendMsg</span>(sock, dg, &amp;msg);
+
+<span class="comment">/* R&eacute;ception */</span>
+<span class="keyword">if</span> (<span class="function">QT_SocketReadMsg</span>(sock, &amp;msg, 5000) == QT_OK) {
+    <span class="type">long</span> id   = <span class="function">QT_SocketGetLong</span>(&amp;msg, <span class="string">"capteur_id"</span>);
+    <span class="type">double</span> temp = <span class="function">QT_SocketGetDouble</span>(&amp;msg, <span class="string">"temperature"</span>);
+}</div>
+        </div>
+
+        <!-- Types Table -->
+        <div class="feature-section">
+            <h2 style="font-size: 1.8rem; color: #1E4068; margin-bottom: 1rem;">Types de donn&eacute;es support&eacute;s</h2>
+            <div class="table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>QuickSERVER (messages)</th>
+                            <th>QuickSDB (variables)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Entier court</td><td>PutShort / GetShort</td><td>Short</td></tr>
+                        <tr><td>Entier long</td><td>PutLong / GetLong</td><td>Long</td></tr>
+                        <tr><td>Flottant simple</td><td>PutFloat / GetFloat</td><td>Float</td></tr>
+                        <tr><td>Flottant double</td><td>PutDouble / GetDouble</td><td>Double</td></tr>
+                        <tr><td>Cha&icirc;ne</td><td>PutString / GetString</td><td>String</td></tr>
+                        <tr><td>Bool&eacute;en</td><td>&mdash;</td><td>Boolean</td></tr>
+                        <tr><td>Date / Heure</td><td>&mdash;</td><td>Date, Time, Delay</td></tr>
+                        <tr><td>Objet</td><td>&mdash;</td><td>Object (avec classes)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <h3>QuickTOOLS</h3>
+            <p>D&eacute;velopp&eacute; par Visuel Concept SAS depuis 1994.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Produit</h4>
+            <ul>
+                <li><a href="features.html">Fonctionnalit&eacute;s</a></li>
+                <li><a href="download.html">T&eacute;l&eacute;chargement</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4>Ressources</h4>
+            <ul>
+                <li><a href="documentation.html">Documentation</a></li>
+                <li><a href="docs/QUICKSTART.html">D&eacute;marrage rapide</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Visuel Concept SAS. Tous droits r&eacute;serv&eacute;s.
+    </div>
+</footer>
+
+</body>
+</html>

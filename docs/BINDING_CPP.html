@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binding C++ — QuickSERVER et QuickSDB - QuickTOOLS 2.80 Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-bottom: 4px solid #5568d3;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        header .logo {
+            flex-shrink: 0;
+        }
+
+        header .logo img {
+            height: 70px;
+            width: auto;
+        }
+
+        header .header-text {
+            flex: 1;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: #2d3748;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #4a5568;
+        }
+
+        nav a.active {
+            background-color: #667eea;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        .toc {
+            background-color: #f7fafc;
+            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+
+        .toc h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .toc ul ul {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .toc a {
+            color: #4a5568;
+            text-decoration: none;
+            display: block;
+            padding: 0.3rem 0;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: #667eea;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #2d3748;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: #4a5568;
+        }
+
+        h4 {
+            font-size: 1.25rem;
+            color: #667eea;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        code {
+            background-color: #f7fafc;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            color: #e83e8c;
+        }
+
+        pre {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-left: 4px solid #667eea;
+        }
+
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+            font-size: 0.95em;
+        }
+
+        ul, ol {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background-color: #667eea;
+            color: white;
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tr:hover {
+            background-color: #f7fafc;
+        }
+
+        blockquote {
+            border-left: 4px solid #667eea;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: #4a5568;
+            font-style: italic;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #e2e8f0;
+            margin: 2rem 0;
+        }
+
+        .function-signature {
+            background-color: #f7fafc;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .parameters {
+            background-color: #fffaf0;
+            border-left: 4px solid #f6ad55;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .returns {
+            background-color: #f0fff4;
+            border-left: 4px solid #48bb78;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .note {
+            background-color: #ebf8ff;
+            border-left: 4px solid #4299e1;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .warning {
+            background-color: #fffaf0;
+            border-left: 4px solid #ed8936;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        footer {
+            background-color: #2d3748;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #667eea;
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .back-to-top:hover {
+            background-color: #5568d3;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+
+            nav, .back-to-top {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            header .logo img {
+                height: 50px;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            main {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo"><img src="data:image/png;base64,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" alt="Visuel Concept"></div>
+            <div class="header-text">
+                <h1>Binding C++ — QuickSERVER et QuickSDB</h1>
+                <div class="subtitle">QuickTOOLS 2.80</div>
+            </div>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="QUICKSTART.html">Démarrage rapide</a></li>
+                <li><a href="COMPILATION.html">Compilation</a></li>
+                <li><a href="SERVER.html">SERVER</a></li>
+                <li><a href="SDB.html">SDB</a></li>
+                <li><a href="UTIL.html">UTIL</a></li>
+                <li><a href="DbEngine.html">DbEngine</a></li>
+                <li><a href="BINDING_CPP.html">Binding C++</a></li>
+                <li><a href="BINDING_JAVA.html">Binding Java</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <div class="toc" id="table-of-contents">
+<h2>Table des matières</h2>
+<ul>
+<li><a href="#quickserver-namespace-quickserver">QuickSERVER (namespace quickserver)</a></li>
+<li><a href="#quicksdb-namespace-quicksdb">QuickSDB (namespace quicksdb)</a></li>
+<li><a href="#compilation-c">Compilation C++</a></li>
+<li><a href="#exemples">Exemples</a></li>
+<li><a href="#notes-de-migration-280">Notes de migration 2.80</a></li>
+<li><a href="#incompatibilites-connues">Incompatibilites connues</a></li>
+</ul>
+</div>
+
+            <h1 id="binding-c-quickserver-et-quicksdb">Binding C++ — QuickSERVER et QuickSDB</h1>
+<p>Ce document decrit les bindings C++ fournis avec QuickTOOLS 2.80 : le namespace <code>quickserver</code> pour la communication et le namespace <code>quicksdb</code> pour la base de donnees partagee.</p>
+<hr>
+<h2 id="quickserver-namespace-quickserver">QuickSERVER (namespace quickserver)</h2>
+<p>Le binding C++ encapsule l'API C de QuickSERVER dans des classes C++ idiomatiques, avec gestion RAII (comptage de references) et exceptions.</p>
+<h3 id="classes-principales">Classes principales</h3>
+<table>
+<thead><tr>
+<th>Classe</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>QuickSERVER</code></td>
+<td>Classe statique — connexion, reception, monitoring</td>
+</tr>
+<tr>
+<td><code>DataGroup</code></td>
+<td>Canal de communication (envoi/reception de messages)</td>
+</tr>
+<tr>
+<td><code>Message</code></td>
+<td>Message ASCII ou binaire, avec serialisation typee</td>
+</tr>
+<tr>
+<td><code>Exception</code></td>
+<td>Exception levee en cas d'erreur QuickSERVER</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fichiers">Fichiers</h3>
+<table>
+<thead><tr>
+<th>Fichier</th>
+<th>Role</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>include/QT_socket.h</code></td>
+<td>Header public (classes + API C)</td>
+</tr>
+<tr>
+<td><code>SERVER/src/client-cpp.cpp</code></td>
+<td>Implementation des classes C++</td>
+</tr>
+<tr>
+<td><code>SERVER/include/client-common.h</code></td>
+<td>Structures internes (DataGroupData, MessageData)</td>
+</tr>
+<tr>
+<td><code>SERVER/src/client-common.cpp</code></td>
+<td>Gestion de la reconnexion automatique</td>
+</tr>
+</tbody>
+</table>
+<h3 id="utilisation-rapide">Utilisation rapide</h3>
+<pre><code>#include &lt;QT_socket.h&gt;
+
+using namespace quickserver;
+
+int main() {
+    try {
+        // Connexion
+        QuickSERVER::init(NULL, &quot;MonClient&quot;, AUTO);
+
+        // Envoi d&#39;un message ASCII
+        DataGroup dg = QuickSERVER::getDG(&quot;mon_sujet&quot;);
+        dg.sendMsg(1001, &quot;Bonjour&quot;);
+
+        // Reception
+        DataGroup dg_recv = QuickSERVER::joinDG(&quot;mon_sujet&quot;);
+        Message m = QuickSERVER::readMsg();
+
+        if (m.isBinary()) {
+            int val = m.readLong();
+            double x = m.readDouble();
+            char *s = m.readString();
+        } else {
+            char *texte = m.getAsciiData();
+        }
+
+        // Reponse directe a l&#39;emetteur
+        m.getSource().sendMsg(1002, &quot;Bien recu&quot;);
+
+    } catch (Exception e) {
+        std::cerr &lt;&lt; e &lt;&lt; std::endl;
+    }
+
+    QuickSERVER::terminate();
+    return 0;
+}</code></pre>
+<hr>
+<h2 id="quicksdb-namespace-quicksdb">QuickSDB (namespace quicksdb)</h2>
+<p>Le binding C++ encapsule l'API C de QuickSDB dans le namespace <code>quicksdb</code>, avec gestion d'exceptions et interface simplifiee.</p>
+<h3 id="classes-principales">Classes principales</h3>
+<table>
+<thead><tr>
+<th>Classe</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>QuickSDB</code></td>
+<td>Classe statique — connexion, variables, formules, persistence</td>
+</tr>
+<tr>
+<td><code>Variable</code></td>
+<td>Donnees d'une variable (nom, type, valeur)</td>
+</tr>
+<tr>
+<td><code>SdbError</code></td>
+<td>Informations d'erreur SDB</td>
+</tr>
+<tr>
+<td><code>Exception</code></td>
+<td>Exception levee en cas d'erreur QuickSDB</td>
+</tr>
+</tbody>
+</table>
+<h3 id="types-et-constantes">Types et constantes</h3>
+<table>
+<thead><tr>
+<th>Type C++</th>
+<th>Type C equivalent</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>FieldType</code></td>
+<td><code>E_FIELD</code></td>
+<td>Type de variable (C<em>BOOLEAN, C</em>LONG, C<em>DOUBLE, C</em>STRING, ...)</td>
+</tr>
+<tr>
+<td><code>SdbErrno</code></td>
+<td><code>E<em>SDB</em>ERROR</code></td>
+<td>Code d'erreur SDB</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fichiers">Fichiers</h3>
+<table>
+<thead><tr>
+<th>Fichier</th>
+<th>Role</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>include/QT_sdb.h</code></td>
+<td>Header public (classes + API C)</td>
+</tr>
+<tr>
+<td><code>SDB/src/client-cpp.cpp</code></td>
+<td>Implementation des classes C++</td>
+</tr>
+</tbody>
+</table>
+<h3 id="utilisation-rapide">Utilisation rapide</h3>
+<pre><code>#include &lt;QT_sdb.h&gt;
+
+using namespace quicksdb;
+
+int main() {
+    try {
+        // Connexion a QuickSDB (instance 0)
+        QuickSDB::connect(NULL, 0);
+
+        // Ajouter des variables
+        QuickSDB::addVariable(0, &quot;temperature&quot;, C_DOUBLE, 20.0);
+        QuickSDB::addVariable(0, &quot;alarme&quot;, C_BOOLEAN, 0);
+
+        // Formule : alarme = temperature &gt; 30
+        QuickSDB::addFormula(0, NULL, &quot;alarme&quot;, &quot;temperature &gt; 30&quot;);
+
+        // Valider les operations
+        QuickSDB::commit(0);
+
+        // Ecrire et evaluer
+        QuickSDB::writeNumeric(0, &quot;temperature&quot;, 35.5);
+        QuickSDB::commit(0);
+        QuickSDB::evaluateAllFormulas(0);
+        QuickSDB::commit(0);
+
+        // Lire les resultats
+        double temp = QuickSDB::readNumericVariable(0, &quot;temperature&quot;);
+        double alarm = QuickSDB::readNumericVariable(0, &quot;alarme&quot;);
+
+        std::cout &lt;&lt; &quot;temperature=&quot; &lt;&lt; temp &lt;&lt; &quot; alarme=&quot; &lt;&lt; alarm &lt;&lt; std::endl;
+
+        // Persistence
+        QuickSDB::save(0, &quot;ma_base.ddl&quot;);
+        QuickSDB::disconnect(0);
+
+    } catch (Exception e) {
+        std::cerr &lt;&lt; &quot;Erreur SDB: &quot; &lt;&lt; e &lt;&lt; std::endl;
+        return 1;
+    }
+
+    return 0;
+}</code></pre>
+<h3 id="api-detaillee-quicksdb">API detaillee — QuickSDB</h3>
+<h4 id="connexion">Connexion</h4>
+<table>
+<thead><tr>
+<th>Methode</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>connect(server, instance)</code></td>
+<td>Connexion au serveur SDB. Retourne un T_DATAGROUP</td>
+</tr>
+<tr>
+<td><code>disconnect(instance)</code></td>
+<td>Deconnexion</td>
+</tr>
+</tbody>
+</table>
+<h4 id="transactions">Transactions</h4>
+<table>
+<thead><tr>
+<th>Methode</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>commit(instance)</code></td>
+<td>Valide toutes les operations en attente</td>
+</tr>
+<tr>
+<td><code>rollback(instance)</code></td>
+<td>Annule les operations en attente</td>
+</tr>
+</tbody>
+</table>
+<h4 id="variables">Variables</h4>
+<table>
+<thead><tr>
+<th>Methode</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>addVariable(instance, name, type, numVal, strVal)</code></td>
+<td>Ajoute une variable</td>
+</tr>
+<tr>
+<td><code>removeVariable(instance, name)</code></td>
+<td>Supprime une variable</td>
+</tr>
+<tr>
+<td><code>writeNumeric(instance, name, value)</code></td>
+<td>Ecrit une valeur numerique</td>
+</tr>
+<tr>
+<td><code>writeString(instance, name, value)</code></td>
+<td>Ecrit une valeur texte</td>
+</tr>
+<tr>
+<td><code>readVariable(instance, name)</code></td>
+<td>Demande asynchrone de lecture</td>
+</tr>
+<tr>
+<td><code>readNumericVariable(instance, name)</code></td>
+<td>Lecture synchrone numerique</td>
+</tr>
+<tr>
+<td><code>readStringVariable(instance, name)</code></td>
+<td>Lecture synchrone texte</td>
+</tr>
+</tbody>
+</table>
+<h4 id="surveillance">Surveillance</h4>
+<table>
+<thead><tr>
+<th>Methode</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>watchVariable(instance, var, existingOnly)</code></td>
+<td>Surveille une variable ou joker</td>
+</tr>
+<tr>
+<td><code>unwatchVariable(instance, var)</code></td>
+<td>Arrete la surveillance</td>
+</tr>
+<tr>
+<td><code>watchGroup(instance, group)</code></td>
+<td>Surveille un groupe</td>
+</tr>
+<tr>
+<td><code>unwatchGroup(instance, group)</code></td>
+<td>Arrete la surveillance d'un groupe</td>
+</tr>
+</tbody>
+</table>
+<h4 id="formules">Formules</h4>
+<table>
+<thead><tr>
+<th>Methode</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>addFormula(instance, cond, varThen, exprThen, varElse, exprElse)</code></td>
+<td>Ajoute une formule conditionnelle ou non</td>
+</tr>
+<tr>
+<td><code>removeFormula(instance, variable)</code></td>
+<td>Supprime une formule</td>
+</tr>
+<tr>
+<td><code>evaluateFormula(instance, variable)</code></td>
+<td>Evalue une formule</td>
+</tr>
+<tr>
+<td><code>evaluateAllFormulas(instance)</code></td>
+<td>Evalue toutes les formules</td>
+</tr>
+</tbody>
+</table>
+<h4 id="objets-et-classes">Objets et classes</h4>
+<table>
+<thead><tr>
+<th>Methode</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>addClass(instance, className)</code></td>
+<td>Definit une classe</td>
+</tr>
+<tr>
+<td><code>addClassMember(instance, class, member, type, numVal, strVal)</code></td>
+<td>Ajoute un membre</td>
+</tr>
+<tr>
+<td><code>removeClassMember(instance, class, member)</code></td>
+<td>Supprime un membre</td>
+</tr>
+<tr>
+<td><code>removeClass(instance, className)</code></td>
+<td>Supprime une classe</td>
+</tr>
+<tr>
+<td><code>addObject(instance, className, name)</code></td>
+<td>Cree un objet</td>
+</tr>
+<tr>
+<td><code>removeObject(instance, name)</code></td>
+<td>Supprime un objet</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumerations">Enumerations</h4>
+<table>
+<thead><tr>
+<th>Methode</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>addEnum(instance, enumName)</code></td>
+<td>Definit une enumeration</td>
+</tr>
+<tr>
+<td><code>addEnumMember(instance, enum, member, value)</code></td>
+<td>Ajoute un membre</td>
+</tr>
+<tr>
+<td><code>removeEnumMember(instance, enum, member)</code></td>
+<td>Supprime un membre</td>
+</tr>
+<tr>
+<td><code>removeEnum(instance, enumName)</code></td>
+<td>Supprime une enumeration</td>
+</tr>
+</tbody>
+</table>
+<h4 id="groupes">Groupes</h4>
+<table>
+<thead><tr>
+<th>Methode</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>addGroup(instance, group)</code></td>
+<td>Cree un groupe</td>
+</tr>
+<tr>
+<td><code>addGroupMember(instance, group, variable)</code></td>
+<td>Ajoute une variable au groupe</td>
+</tr>
+<tr>
+<td><code>removeGroupMember(instance, group, variable)</code></td>
+<td>Retire une variable</td>
+</tr>
+<tr>
+<td><code>removeGroup(instance, group)</code></td>
+<td>Supprime un groupe</td>
+</tr>
+<tr>
+<td><code>groupAttach(instance, group)</code></td>
+<td>S'attache au groupe (notifications)</td>
+</tr>
+<tr>
+<td><code>groupDetach(instance, group)</code></td>
+<td>Se detache du groupe</td>
+</tr>
+</tbody>
+</table>
+<h4 id="persistence">Persistence</h4>
+<table>
+<thead><tr>
+<th>Methode</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>create(instance, filename)</code></td>
+<td>Cree un fichier de base</td>
+</tr>
+<tr>
+<td><code>load(instance, filename)</code></td>
+<td>Charge depuis un fichier</td>
+</tr>
+<tr>
+<td><code>save(instance, filename)</code></td>
+<td>Sauvegarde dans un fichier</td>
+</tr>
+<tr>
+<td><code>reset(instance)</code></td>
+<td>Reinitialise les valeurs</td>
+</tr>
+<tr>
+<td><code>clear(instance)</code></td>
+<td>Efface toute la base</td>
+</tr>
+</tbody>
+</table>
+<h4 id="parsing-de-messages">Parsing de messages</h4>
+<table>
+<thead><tr>
+<th>Methode</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>msgReadVariable(T_MESSAGE *msg)</code></td>
+<td>Lit une variable depuis un message SDB</td>
+</tr>
+<tr>
+<td><code>msgReadError(T_MESSAGE *msg)</code></td>
+<td>Lit une erreur depuis un message SDB</td>
+</tr>
+<tr>
+<td><code>typeToString(type)</code></td>
+<td>Convertit un type en chaine</td>
+</tr>
+<tr>
+<td><code>valueToString(type, value)</code></td>
+<td>Convertit une valeur en chaine</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="compilation-c">Compilation C++</h2>
+<h3 id="windows-visual-studio">Windows (Visual Studio)</h3>
+<p>Les bindings C++ sont compiles en meme temps que les bibliotheques <code>qt<em>server.lib</code> et <code>qt</em>sdb.lib</code> par les scripts <code>build<em>server.bat</code> et <code>build</em>sdb.bat</code>.</p>
+<p>L'utilisateur n'a qu'a linker avec les bibliotheques fournies :</p>
+<h4 id="quickserver">QuickSERVER</h4>
+<pre><code>cl /EHsc /I &quot;%QT_HOME%\include&quot; mon_programme.cpp /link ^
+   &quot;%QT_HOME%\lib\qt_server.lib&quot; ^
+   &quot;%QT_HOME%\lib\qt_util.lib&quot; ^
+   ws2_32.lib</code></pre>
+<h4 id="quicksdb">QuickSDB</h4>
+<pre><code>cl /EHsc /I &quot;%QT_HOME%\include&quot; mon_programme.cpp /link ^
+   &quot;%QT_HOME%\lib\qt_sdb.lib&quot; ^
+   &quot;%QT_HOME%\lib\qt_server.lib&quot; ^
+   &quot;%QT_HOME%\lib\qt_util.lib&quot; ^
+   ws2_32.lib</code></pre>
+<p><strong>Options importantes :</strong></p>
+<ul>
+<li><code>/EHsc</code> : active les exceptions C++ (obligatoire pour les bindings)</li>
+<li>L'include <code>QT_socket.h</code> contient le namespace <code>quickserver</code></li>
+<li>L'include <code>QT_sdb.h</code> contient le namespace <code>quicksdb</code></li>
+</ul>
+<h3 id="unixlinux">Unix/Linux</h3>
+<pre><code># QuickSERVER
+CFLAGS = -I$(QT_HOME)/include
+LDFLAGS = -L$(QT_HOME)/lib -lqt_server -lqt_util -lpthread -lsocket -lnsl
+
+# QuickSDB (ajouter -lqt_sdb)
+LDFLAGS = -L$(QT_HOME)/lib -lqt_sdb -lqt_server -lqt_util -lpthread -lsocket -lnsl</code></pre>
+<hr>
+<h2 id="exemples">Exemples</h2>
+<p>Des exemples complets sont fournis :</p>
+<h3 id="quickserver-c">QuickSERVER C++</h3>
+<table>
+<thead><tr>
+<th>Fichier</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>examples/SOCKET/cpp/emission.cpp</code></td>
+<td>Emission de messages (ASCII, binaire, structure)</td>
+</tr>
+<tr>
+<td><code>examples/SOCKET/cpp/reception.cpp</code></td>
+<td>Reception, parsing de champs structures, reponse</td>
+</tr>
+</tbody>
+</table>
+<h3 id="quicksdb-c">QuickSDB C++</h3>
+<table>
+<thead><tr>
+<th>Fichier</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>examples/SDB/cpp/sdb_write.cpp</code></td>
+<td>Ajout de variables, formules, ecriture, lecture</td>
+</tr>
+<tr>
+<td><code>examples/SDB/cpp/sdb_watch.cpp</code></td>
+<td>Surveillance de variables, reception de notifications</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="notes-de-migration-280">Notes de migration 2.80</h2>
+<h3 id="1-correction-de-const-sur-les-signatures-compatible-source">1. Correction de <code>const</code> sur les signatures (compatible source)</h3>
+<p>Les parametres <code>char<em></code> qui ne sont pas modifies par la fonction sont desormais declares <code>const char</em></code>. Cela concerne les methodes suivantes :</p>
+<ul>
+<li><code>QuickSERVER::init(const char<em>, const char</em>, ReconnectionMode)</code></li>
+<li><code>QuickSERVER::getDG(const char*)</code></li>
+<li><code>QuickSERVER::joinDG(const char*)</code></li>
+<li><code>QuickSERVER::watchConnect(const char*)</code></li>
+<li><code>QuickSERVER::unWatchConnect(const char*)</code></li>
+<li><code>QuickSERVER::watchDG(const char*)</code></li>
+<li><code>QuickSERVER::unWatchDG(const char*)</code></li>
+<li><code>QuickSERVER::sendTimerMsg(const char<em>, int, double, const char</em>)</code></li>
+<li><code>DataGroup::sendTimerMsg(int, double, const char*)</code></li>
+<li><code>Message::write(const char*)</code></li>
+<li><code>Exception::Exception(const char*, Errno)</code></li>
+</ul>
+<p><strong>Impact sur les clients existants</strong> : Cette modification est <strong>compatible</strong> dans la grande majorite des cas. Le code existant qui passe des litteraux de chaine (ex: <code>getDG("test")</code>) ou des <code>const char*</code> fonctionne sans modification.</p>
+<p>Le seul cas problematique est du code qui prend l'adresse de la methode (pointeur de fonction) — extremement rare en pratique.</p>
+<h3 id="2-correction-dun-bug-de-fuite-memoire-dans-datagroup">2. Correction d'un bug de fuite memoire dans DataGroup</h3>
+<p>Le destructeur de <code>DataGroup</code> contenait un bug critique : <code>ref<em>count++</code> au lieu de <code>ref</em>count--</code>, causant une <strong>fuite memoire</strong> systematique. Les <code>DataGroupData</code> n'etaient jamais liberes.</p>
+<p>Cette correction est transparente pour les clients mais peut modifier le comportement memoire de l'application (positivement).</p>
+<h3 id="3-nouveau-binding-c-pour-quicksdb">3. Nouveau binding C++ pour QuickSDB</h3>
+<p>Le namespace <code>quicksdb</code> est nouveau dans la version 2.80. Il n'existait aucun binding C++ pour QuickSDB dans les versions precedentes.</p>
+<p><strong>Impact</strong> : Aucun. Les clients C existants utilisant directement l'API C (<code>QT_Sdb*()</code>) ne sont pas affectes.</p>
+<hr>
+<h2 id="incompatibilites-connues">Incompatibilites connues</h2>
+<table>
+<thead><tr>
+<th>Element</th>
+<th>Raison</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Namespace C++ <code>quickserver</code></td>
+<td>Utilise par tous les clients C++ SERVER</td>
+</tr>
+<tr>
+<td>Namespace C++ <code>quicksdb</code></td>
+<td>Nouveau — pas de clients existants</td>
+</tr>
+<tr>
+<td>API C non-const</td>
+<td>L'API C (<code>QT<em>Socket<em></code>, <code>QT</em>Sdb</em></code>) utilise <code>char<em></code> au lieu de <code>const char</em></code>. Les bindings C++ castent vers <code>char*</code> en interne</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><em>QuickTOOLS 2.80 — Copyright 1994-2026 Visuel Concept SAS</em></p>
+        </main>
+
+        <footer>
+            <p>QuickTOOLS 2.80 — Copyright &copy; 1994-2026 Visuel Concept SAS</p>
+            <p>Generated on 2026-03-08</p>
+            <p><a href="#top">Back to Top</a></p>
+        </footer>
+    </div>
+
+    <a href="#top" class="back-to-top" title="Back to top">↑</a>
+</body>
+</html>

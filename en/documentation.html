@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation — QuickTOOLS 2.80</title>
+    <meta name="description" content="Complete technical documentation for QuickTOOLS: guides, API references and tutorials.">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../assets/QuickSERVER.svg">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">
+            <img src="../assets/logo.png" alt="Visuel Concept">
+            QuickTOOLS
+        </a>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label"><span></span></label>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="documentation.html" class="active">Documentation</a></li>
+            <li><a href="download.html">Download</a></li>
+            <li class="lang-switcher">
+                <a href="../documentation.html">FR</a>
+                <a href="documentation.html" class="active">EN</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="page-header">
+    <h1>Documentation</h1>
+    <p>Guides, API references and technical resources to get started quickly with QuickTOOLS.</p>
+</section>
+
+<!-- Notice -->
+<section class="section section-alt">
+    <div class="section-inner">
+        <div style="background: #e6f7ff; border: 1px solid #91d5ff; border-radius: 8px; padding: 1.25rem; margin-bottom: 2rem; color: #0050b3;">
+            <strong>Note:</strong> Technical documentation is currently available in French only. An English translation is planned for a future release.
+        </div>
+
+        <h2 class="section-title">Getting started</h2>
+        <p class="section-subtitle">Essential guides to get up and running with QuickTOOLS.</p>
+        <div class="doc-cards">
+            <a href="../docs/QUICKSTART.html" class="doc-card">
+                <span class="doc-card-tag tag-guide">Guide</span>
+                <h3>Quick start</h3>
+                <p>Installation, license activation, configuration and first client program in minutes.</p>
+            </a>
+            <a href="../docs/COMPILATION.html" class="doc-card">
+                <span class="doc-card-tag tag-build">Build</span>
+                <h3>Compilation guide</h3>
+                <p>Prerequisites, Visual Studio environment setup and compiling your applications.</p>
+            </a>
+            <a href="../docs/index.html" class="doc-card">
+                <span class="doc-card-tag tag-guide">Guide</span>
+                <h3>Technical overview</h3>
+                <p>Architecture, key concepts, modules, license management and complete reference.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- API Reference -->
+<section class="section">
+    <div class="section-inner">
+        <h2 class="section-title">API Reference</h2>
+        <p class="section-subtitle">Detailed documentation for each framework component.</p>
+        <div class="doc-cards">
+            <a href="../docs/SERVER.html" class="doc-card">
+                <span class="doc-card-tag tag-api">API</span>
+                <h3>QuickSERVER</h3>
+                <p>Messaging API: connection, datagroups, send/receive messages, callbacks, compression.</p>
+            </a>
+            <a href="../docs/SDB.html" class="doc-card">
+                <span class="doc-card-tag tag-api">API</span>
+                <h3>QuickSDB</h3>
+                <p>Shared database API: variables, objects, formulas, persistence, transactions.</p>
+            </a>
+            <a href="../docs/DbEngine.html" class="doc-card">
+                <span class="doc-card-tag tag-api">API</span>
+                <h3>DbEngine</h3>
+                <p>SQL abstraction: connection, queries, results, multi-engine support (SQLite, MySQL, etc.).</p>
+            </a>
+            <a href="../docs/UTIL.html" class="doc-card">
+                <span class="doc-card-tag tag-api">API</span>
+                <h3>Utilities (UTIL)</h3>
+                <p>Utility functions: memory, strings, dates, configuration, compression, data structures.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Bindings -->
+<section class="section section-alt">
+    <div class="section-inner">
+        <h2 class="section-title">Bindings</h2>
+        <p class="section-subtitle">Integration with C++ and Java.</p>
+        <div class="doc-cards">
+            <a href="../docs/BINDINGS.html" class="doc-card">
+                <span class="doc-card-tag tag-binding">Binding</span>
+                <h3>Bindings overview</h3>
+                <p>General overview of available C++ and Java bindings.</p>
+            </a>
+            <a href="../docs/BINDING_CPP.html" class="doc-card">
+                <span class="doc-card-tag tag-binding">C++</span>
+                <h3>C++ binding</h3>
+                <p>Namespaces <code>quickserver</code> and <code>quicksdb</code>, wrapper classes and usage examples.</p>
+            </a>
+            <a href="../docs/BINDING_JAVA.html" class="doc-card">
+                <span class="doc-card-tag tag-binding">Java</span>
+                <h3>Java binding</h3>
+                <p>Packages <code>visuelconcept.quickserver</code> and <code>visuelconcept.quicksdb</code>, JNI and examples.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <h3>QuickTOOLS</h3>
+            <p>Developed by Visuel Concept SAS since 1994.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Product</h4>
+            <ul>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="download.html">Download</a></li>
+            </ul>
+        </div>
+        <div class="footer-links">
+            <h4>Resources</h4>
+            <ul>
+                <li><a href="documentation.html">Documentation</a></li>
+                <li><a href="../docs/QUICKSTART.html">Quick start</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Visuel Concept SAS. All rights reserved.
+    </div>
+</footer>
+
+</body>
+</html>
