@@ -73,14 +73,17 @@
 <section class="section">
     <div class="section-inner">
         <h2 class="section-title">Echtzeit-Kommunikation &uuml;ber Datagroups</h2>
-        <p class="section-subtitle">Datagroups sind logisch voneinander isolierte Datens&auml;tze, die von den QuickSERVER-Brokern verwaltet werden. Beispiel: &Uuml;berwachung eines Stra&szlig;entunnels.</p>
+        <p class="section-subtitle">Datagroups sind logisch voneinander isolierte Datens&auml;tze, die von den QuickSERVER-Brokern verwaltet werden. Architekturbeispiel: &Uuml;berwachung eines Stra&szlig;entunnels.</p>
 
         <div class="td-diagram">
+            <div class="td-group-label">Feldschnittstellen</div>
             <div class="td-clients">
                 <div class="td-node" style="--i:0"><div class="td-icon">C</div>Bel&uuml;ftung</div>
                 <div class="td-node" style="--i:1"><div class="td-icon">C++</div>Beleuchtung</div>
                 <div class="td-node" style="--i:2"><div class="td-icon">C</div>Verkehrssteuerung</div>
                 <div class="td-node" style="--i:3"><div class="td-icon">Java</div>Branderkennung</div>
+                <div class="td-node" style="--i:4"><div class="td-icon">Java</div>Video&uuml;berwachung</div>
+                <div class="td-node" style="--i:5"><div class="td-icon">C++</div>Notfalltelefon</div>
             </div>
             <div class="td-wires">
                 <svg viewBox="0 0 800 36" preserveAspectRatio="none">
@@ -140,11 +143,12 @@
                     <circle r="4" class="td-dot"><animateMotion dur="1.9s" repeatCount="indefinite" begin="1.7s" path="M700,36 L550,0"/></circle>
                 </svg>
             </div>
+            <div class="td-group-label">Technische Schnittstellen</div>
             <div class="td-clients">
-                <div class="td-node" style="--i:4"><div class="td-icon">C++</div>SCADA / HMI</div>
-                <div class="td-node" style="--i:5"><div class="td-icon">C</div>Historisierung</div>
-                <div class="td-node" style="--i:6"><div class="td-icon">Java</div>Video&uuml;berwachung</div>
-                <div class="td-node" style="--i:7"><div class="td-icon">C++</div>Notfalltelefon</div>
+                <div class="td-node" style="--i:6"><div class="td-icon">C++</div>SCADA / HMI</div>
+                <div class="td-node" style="--i:7"><div class="td-icon">C</div>Historisierung</div>
+                <div class="td-node" style="--i:8"><div class="td-icon">Java</div>MQTT Bridge</div>
+                <div class="td-node" style="--i:9"><div class="td-icon">C++</div>OPC UA</div>
             </div>
             <p class="td-note">Die Client-Anwendungen werden vom Benutzer mit den SDK-Bibliotheken von QuickTOOLS erstellt (C, C++, Java).</p>
         </div>

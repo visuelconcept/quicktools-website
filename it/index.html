@@ -73,14 +73,17 @@
 <section class="section">
     <div class="section-inner">
         <h2 class="section-title">Comunicazione in tempo reale tramite Datagroups</h2>
-        <p class="section-subtitle">I Datagroups sono insiemi logici di dati isolati tra loro, gestiti dai broker QuickSERVER. Esempio: supervisione di un tunnel stradale.</p>
+        <p class="section-subtitle">I Datagroups sono insiemi logici di dati isolati tra loro, gestiti dai broker QuickSERVER. Esempio di architettura: supervisione di un tunnel stradale.</p>
 
         <div class="td-diagram">
+            <div class="td-group-label">Interfacce di campo</div>
             <div class="td-clients">
                 <div class="td-node" style="--i:0"><div class="td-icon">C</div>Ventilazione</div>
                 <div class="td-node" style="--i:1"><div class="td-icon">C++</div>Illuminazione</div>
                 <div class="td-node" style="--i:2"><div class="td-icon">C</div>Gestione traffico</div>
                 <div class="td-node" style="--i:3"><div class="td-icon">Java</div>Rilevamento incendi</div>
+                <div class="td-node" style="--i:4"><div class="td-icon">Java</div>Videosorveglianza</div>
+                <div class="td-node" style="--i:5"><div class="td-icon">C++</div>Tel. emergenza</div>
             </div>
             <div class="td-wires">
                 <svg viewBox="0 0 800 36" preserveAspectRatio="none">
@@ -140,11 +143,12 @@
                     <circle r="4" class="td-dot"><animateMotion dur="1.9s" repeatCount="indefinite" begin="1.7s" path="M700,36 L550,0"/></circle>
                 </svg>
             </div>
+            <div class="td-group-label">Interfacce tecniche</div>
             <div class="td-clients">
-                <div class="td-node" style="--i:4"><div class="td-icon">C++</div>SCADA / HMI</div>
-                <div class="td-node" style="--i:5"><div class="td-icon">C</div>Storico</div>
-                <div class="td-node" style="--i:6"><div class="td-icon">Java</div>Videosorveglianza</div>
-                <div class="td-node" style="--i:7"><div class="td-icon">C++</div>Tel. emergenza</div>
+                <div class="td-node" style="--i:6"><div class="td-icon">C++</div>SCADA / HMI</div>
+                <div class="td-node" style="--i:7"><div class="td-icon">C</div>Storico</div>
+                <div class="td-node" style="--i:8"><div class="td-icon">Java</div>Bridge MQTT</div>
+                <div class="td-node" style="--i:9"><div class="td-icon">C++</div>OPC UA</div>
             </div>
             <p class="td-note">Le applicazioni client sono sviluppate dall'utente utilizzando le librerie SDK fornite con QuickTOOLS (C, C++, Java).</p>
         </div>
