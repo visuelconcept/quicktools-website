@@ -1103,9 +1103,9 @@ img, svg {
     .td-wires::after {
         content: '';
         position: absolute; top: calc(50% - 5px);
-        width: 10px; height: 10px; border-radius: 50%;
-        background: var(--color-primary);
-        box-shadow: 0 0 6px var(--color-primary);
+        width: 14px; height: 14px; border-radius: 50%;
+        background: #3b82f6;
+        box-shadow: 0 0 8px 3px #3b82f6, 0 0 20px 6px rgba(59, 130, 246, 0.5);
         animation: td-flow-h 1.6s ease-in-out infinite alternate;
     }
     .td-infra { padding: 1rem 1rem; max-width: 100%; width: auto; margin: 0; }
