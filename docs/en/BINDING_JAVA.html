@@ -474,6 +474,44 @@
 <pre><code>lib_QTsocket  (primary attempt)
 _QTsocket     (fallback)</code></pre>
 <p><strong>IMPORTANT</strong>: the name of this library must never be changed, otherwise all existing Java clients will break.</p>
+<h3 id="installation-and-classpath">Installation and classpath</h3>
+<p>After installing QuickSERVER (via the installer or from a build), the Java files are located in the <code>%QT_HOME%\lib\Java\</code> directory:</p>
+<table>
+<thead><tr>
+<th>File</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>quickserver.jar</code></td>
+<td>QuickSERVER Java classes (Message, DataGroup, QuickSERVER)</td>
+</tr>
+<tr>
+<td><code>quicksdb.jar</code></td>
+<td>QuickSDB Java classes</td>
+</tr>
+<tr>
+<td><code>lib_QTsocket.dll</code></td>
+<td>JNI native library for QuickSERVER</td>
+</tr>
+<tr>
+<td><code>lib_QTsdb.dll</code></td>
+<td>JNI native library for QuickSDB</td>
+</tr>
+</tbody>
+</table>
+<h4 id="compiling-a-java-program">Compiling a Java program</h4>
+<pre><code>javac -classpath &quot;%QT_HOME%\lib\Java\quickserver.jar;%QT_HOME%\lib\Java\quicksdb.jar&quot; MyClient.java</code></pre>
+<h4 id="running">Running</h4>
+<pre><code>java -classpath &quot;%QT_HOME%\lib\Java\quickserver.jar;%QT_HOME%\lib\Java\quicksdb.jar;.&quot; -Djava.library.path=&quot;%QT_HOME%\lib\Java&quot; MyClient</code></pre>
+<p>The <code>-Djava.library.path</code> parameter is required so that Java can find the JNI native DLLs.</p>
+<h4 id="building-jars-from-source-development">Building JARs from source (development)</h4>
+<pre><code>cd port2.6\SERVER\java
+build_jar.bat
+
+cd port2.6\SDB\java
+build_jar.bat</code></pre>
+<p>JARs are generated in <code>port2.6\build\lib\Java\</code>.</p>
 <h3 id="quick-start">Quick start</h3>
 <pre><code>import visuelconcept.quickserver.*;
 import java.io.IOException;
