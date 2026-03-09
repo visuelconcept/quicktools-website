@@ -403,11 +403,88 @@
 </ul>
 <h2 id="structure-de-linstallation">Structure de l'installation</h2>
 <pre><code>%QT_HOME%\
-├── bin\          QuickServer.exe, QuickSDB.exe, QuickActivator.exe, QuickTIMER.exe
-├── include\      Headers (QT_std.h, QT_util.h, QT_socket.h, QT_sdb.h, Engine.h, ...)
-├── lib\          Bibliothèques statiques (.lib)
-├── etc\          Configuration (server.dat)
-└── doc\          Documentation</code></pre>
+├── bin\                Exécutables et DLLs runtime
+│   ├── QuickServer.exe     Serveur de messages (broker)
+│   ├── QuickTIMER.exe      Serveur de messages temporisé
+│   ├── QuickSDB.exe        Serveur de base de données partagée
+│   ├── QuickActivator.exe  Outil d&#39;activation de licence
+│   └── sqlite3.dll         Runtime SQLite (pour DbEngine)
+├── include\            Headers publics C/C++
+│   ├── QT_std.h            Types et macros de base
+│   ├── QT_util.h           Fonctions utilitaires
+│   ├── QT_socket.h         API client QuickSERVER (C)
+│   ├── QT_sdb.h            API client QuickSDB (C)
+│   ├── client-common.h     API client QuickSERVER (C++)
+│   ├── server.h            Constantes et types serveur
+│   ├── sdb.h               Constantes et types SDB
+│   ├── Engine.h            API DbEngine SQL
+│   ├── Drivers.h           Drivers SQL disponibles
+│   ├── queue.h             File d&#39;attente (structure de données)
+│   ├── symtable.h          Table de symboles
+│   └── hashtable.h         Table de hachage
+├── lib\                Bibliothèques de développement
+│   ├── static_MD\          Bibliothèques statiques /MD (CRT partagée msvcrt.dll)
+│   │   ├── qt_util.lib
+│   │   ├── qt_server.lib
+│   │   ├── qt_sdb.lib
+│   │   └── qt_dbengine.lib
+│   ├── static_MT\          Bibliothèques statiques /MT (CRT embarquée, exe autonome)
+│   │   ├── qt_util.lib
+│   │   ├── qt_server.lib
+│   │   ├── qt_sdb.lib
+│   │   └── qt_dbengine.lib
+│   ├── shared\             DLLs + import libs (linkage dynamique)
+│   │   ├── qt_util.dll + qt_util.lib
+│   │   ├── qt_server.dll + qt_server.lib
+│   │   ├── qt_sdb.dll + qt_sdb.lib
+│   │   └── qt_dbengine.dll + qt_dbengine.lib
+│   └── Java\               Bindings Java (x64 uniquement)
+│       ├── quickserver.jar     Classes Java QuickSERVER
+│       ├── quicksdb.jar        Classes Java QuickSDB
+│       ├── lib_QTsocket.dll    JNI natif QuickSERVER
+│       └── lib_QTsdb.dll       JNI natif QuickSDB
+├── etc\                Configuration
+│   └── server.dat          Fichier de configuration du serveur
+├── examples\           Exemples de code source
+│   ├── c\                  Exemples C (emission, reception, watch, sdb)
+│   ├── cpp\                Exemples C++ (emission, reception, sdb)
+│   ├── java\               Exemples Java (emission, reception, sdb)
+│   └── tests\              Sources des tests et benchmarks
+└── doc\                Documentation
+    ├── html\               Documentation HTML (FR)
+    ├── html\en\            Documentation HTML (EN)
+    ├── en\                 Documentation Markdown (EN)
+    └── *.md                Documentation Markdown (FR)</code></pre>
+<h3 id="variantes-de-bibliothèques">Variantes de bibliothèques</h3>
+<table>
+<thead><tr>
+<th>Répertoire</th>
+<th>Flag MSVC</th>
+<th>CRT</th>
+<th>Usage recommandé</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><code>lib\static_MD</code></td>
+<td><code>/MD</code></td>
+<td><code>msvcrt.dll</code> (partagée)</td>
+<td><strong>Défaut</strong> — exe plus petit, CRT standard Windows</td>
+</tr>
+<tr>
+<td><code>lib\static_MT</code></td>
+<td><code>/MT</code></td>
+<td>Embarquée dans l'exe</td>
+<td>Exe totalement autonome, pas de dépendance CRT</td>
+</tr>
+<tr>
+<td><code>lib\shared</code></td>
+<td><code>/MD</code></td>
+<td><code>msvcrt.dll</code> (partagée)</td>
+<td>Linkage dynamique — nécessite les DLLs au runtime</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Important :</strong> toutes les bibliothèques (.lib, .obj) d'un même exécutable doivent utiliser la même variante CRT (<code>/MD</code> ou <code>/MT</code>). Mélanger <code>/MD</code> et <code>/MT</code> provoque des erreurs LNK2038.</p>
 <h2 id="initialisation-de-lenvironnement-visual-studio">Initialisation de l'environnement Visual Studio</h2>
 <p>Avant de compiler, initialisez l'environnement Visual Studio :</p>
 <pre><code>REM Visual Studio 2022 (x86)
@@ -454,7 +531,7 @@ qt_dbengine.lib      → qt_util.lib</code></pre>
 <h2 id="compilation-par-module">Compilation par module</h2>
 <h3 id="application-quickserver-envoiréception-de-messages">Application QuickSERVER (envoi/réception de messages)</h3>
 <pre><code>cl /nologo /I&quot;%QT_HOME%\include&quot; mon_client.c ^
-   /link /LIBPATH:&quot;%QT_HOME%\lib&quot; ^
+   /link /LIBPATH:&quot;%QT_HOME%\lib\static_MD&quot; ^
    qt_server.lib qt_util.lib ^
    ws2_32.lib advapi32.lib</code></pre>
 <p>Headers requis dans le code :</p>
@@ -462,7 +539,7 @@ qt_dbengine.lib      → qt_util.lib</code></pre>
 #include &quot;QT_socket.h&quot;</code></pre>
 <h3 id="application-quicksdb-variables-partagées">Application QuickSDB (variables partagées)</h3>
 <pre><code>cl /nologo /I&quot;%QT_HOME%\include&quot; mon_sdb.c ^
-   /link /LIBPATH:&quot;%QT_HOME%\lib&quot; ^
+   /link /LIBPATH:&quot;%QT_HOME%\lib\static_MD&quot; ^
    qt_sdb.lib qt_server.lib qt_util.lib ^
    ws2_32.lib advapi32.lib</code></pre>
 <p>Headers requis :</p>
@@ -471,7 +548,7 @@ qt_dbengine.lib      → qt_util.lib</code></pre>
 #include &quot;QT_sdb.h&quot;</code></pre>
 <h3 id="application-dbengine-accès-sql">Application DbEngine (accès SQL)</h3>
 <pre><code>cl /nologo /I&quot;%QT_HOME%\include&quot; /DUSE_SQLITE mon_sql.c ^
-   /link /LIBPATH:&quot;%QT_HOME%\lib&quot; ^
+   /link /LIBPATH:&quot;%QT_HOME%\lib\static_MD&quot; ^
    qt_dbengine.lib qt_util.lib</code></pre>
 <p>Headers requis :</p>
 <pre><code>#include &quot;QT_std.h&quot;
@@ -514,7 +591,7 @@ qt_dbengine.lib      → qt_util.lib</code></pre>
 </table>
 <h3 id="application-utilisant-uniquement-util">Application utilisant uniquement UTIL</h3>
 <pre><code>cl /nologo /I&quot;%QT_HOME%\include&quot; mon_util.c ^
-   /link /LIBPATH:&quot;%QT_HOME%\lib&quot; ^
+   /link /LIBPATH:&quot;%QT_HOME%\lib\static_MD&quot; ^
    qt_util.lib advapi32.lib</code></pre>
 <h2 id="intégration-avec-visual-studio-projet">Intégration avec Visual Studio (projet)</h2>
 <h3 id="propriétés-du-projet">Propriétés du projet</h3>
@@ -524,7 +601,7 @@ qt_dbengine.lib      → qt_util.lib</code></pre>
 </ol>
 <ol>
 <li><strong>Éditeur de liens → Général → Répertoires de bibliothèques supplémentaires</strong> :</li>
-<pre><code>   $(QT_HOME)\lib</code></pre>
+<pre><code>   $(QT_HOME)\lib\static_MD</code></pre>
 </ol>
 <ol>
 <li><strong>Éditeur de liens → Entrée → Dépendances supplémentaires</strong> (selon le module) :</li>
@@ -541,7 +618,7 @@ qt_dbengine.lib      → qt_util.lib</code></pre>
     &lt;PreprocessorDefinitions&gt;WIN32;_WINDOWS;S_WIN32;%(PreprocessorDefinitions)&lt;/PreprocessorDefinitions&gt;
   &lt;/ClCompile&gt;
   &lt;Link&gt;
-    &lt;AdditionalLibraryDirectories&gt;$(QT_HOME)\lib&lt;/AdditionalLibraryDirectories&gt;
+    &lt;AdditionalLibraryDirectories&gt;$(QT_HOME)\lib\static_MD&lt;/AdditionalLibraryDirectories&gt;
     &lt;AdditionalDependencies&gt;qt_server.lib;qt_util.lib;ws2_32.lib;advapi32.lib&lt;/AdditionalDependencies&gt;
   &lt;/Link&gt;
 &lt;/ItemDefinitionGroup&gt;</code></pre>
@@ -556,7 +633,7 @@ if(NOT QT_HOME)
 endif()
 
 include_directories(${QT_HOME}/include)
-link_directories(${QT_HOME}/lib)
+link_directories(${QT_HOME}/lib/static_MD)
 
 add_executable(mon_client mon_client.c)
 target_link_libraries(mon_client qt_server qt_util ws2_32 advapi32)
@@ -651,7 +728,7 @@ dir &quot;%QT_HOME%\lib\*.lib&quot;</code></pre>
 
         <footer>
             <p>QuickTOOLS 2.80 — Copyright &copy; 1994-2026 Visuel Concept SAS</p>
-            <p>Généré le 2026-03-08</p>
+            <p>Généré le 2026-03-09</p>
             <p><a href="#top">Back to Top</a></p>
         </footer>
     </div>

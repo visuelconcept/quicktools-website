@@ -346,7 +346,6 @@
                 padding: 1rem;
             }
         }
-
     </style>
 </head>
 <body>
@@ -362,114 +361,85 @@
         <nav>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
-                <li><a href="QUICKSTART.html" class="active">Démarrage rapide</a></li>
+                <li><a href="QUICKSTART.html">Démarrage rapide</a></li>
+                <li><a href="COMPILATION.html">Compilation</a></li>
                 <li><a href="SERVER.html">SERVER</a></li>
                 <li><a href="SDB.html">SDB</a></li>
                 <li><a href="UTIL.html">UTIL</a></li>
                 <li><a href="DbEngine.html">DbEngine</a></li>
+                <li><a href="BINDING_CPP.html">Binding C++</a></li>
+                <li><a href="BINDING_JAVA.html">Binding Java</a></li>
             </ul>
         </nav>
 
         <main>
             <div class="toc" id="table-of-contents">
 <h2>Table des matières</h2>
-<div class="toc">
 <ul>
-<li><a href="#prerequis">Prérequis</a></li>
-<li><a href="#1-verifier-linstallation">1. Vérifier l'installation</a></li>
-<li><a href="#2-activer-la-licence">2. Activer la licence</a><ul>
-<li><a href="#demarrage-rapide-sans-licence">Démarrage rapide (sans licence)</a></li>
-<li><a href="#activer-une-licence">Activer une licence</a></li>
-<li><a href="#activer-hors-ligne-pc-sans-internet">Activer hors ligne (PC sans internet)</a></li>
-<li><a href="#activer-le-mode-trial">Activer le mode trial</a></li>
-<li><a href="#prolonger-un-trial-local-hors-ligne">Prolonger un trial local (hors ligne)</a></li>
-<li><a href="#verifier-le-statut">Vérifier le statut</a></li>
-<li><a href="#desactiver-la-licence">Désactiver la licence</a></li>
-<li><a href="#transferer-une-licence-vers-un-autre-pc">Transférer une licence vers un autre PC</a></li>
-</ul>
-</li>
-<li><a href="#3-demarrer-quickserver">3. Démarrer QuickSERVER</a></li>
+<li><a href="#prérequis">Prérequis</a></li>
+<li><a href="#1-vérifier-linstallation">1. Vérifier l'installation</a></li>
+<li><a href="#2-activer-la-licence">2. Activer la licence</a></li>
+<li><a href="#3-démarrer-quickserver">3. Démarrer QuickSERVER</a></li>
 <li><a href="#4-diagnostic">4. Diagnostic</a></li>
 <li><a href="#5-premier-client-envoi-de-messages">5. Premier client — Envoi de messages</a></li>
-<li><a href="#6-premier-client-reception-de-messages">6. Premier client — Réception de messages</a></li>
-<li><a href="#7-compiler">7. Compiler</a><ul>
-<li><a href="#avec-visual-studio-ligne-de-commande">Avec Visual Studio (ligne de commande)</a></li>
-<li><a href="#avec-le-systeme-de-build-quicktools">Avec le système de build QuickTools</a></li>
-</ul>
-</li>
+<li><a href="#6-premier-client-réception-de-messages">6. Premier client — Réception de messages</a></li>
+<li><a href="#7-compiler">7. Compiler</a></li>
 <li><a href="#8-tester">8. Tester</a></li>
-<li><a href="#9-premier-client-sdb-variables-partagees">9. Premier client SDB — Variables partagées</a></li>
-<li><a href="#10-premier-client-dbengine-acces-sql">10. Premier client DbEngine — Accès SQL</a></li>
-<li><a href="#etapes-suivantes">Étapes suivantes</a></li>
+<li><a href="#9-premier-client-sdb-variables-partagées">9. Premier client SDB — Variables partagées</a></li>
+<li><a href="#10-premier-client-dbengine-accès-sql">10. Premier client DbEngine — Accès SQL</a></li>
+<li><a href="#étapes-suivantes">Étapes suivantes</a></li>
 </ul>
 </div>
 
-</div>
-<h1 id="guide-de-demarrage-rapide">Guide de démarrage rapide</h1>
-<p>Ce guide vous permet de mettre en route QuickSERVER et de créer votre premier client
-en quelques minutes.</p>
-<h2 id="prerequis">Prérequis</h2>
+            <h1 id="guide-de-démarrage-rapide">Guide de démarrage rapide</h1>
+<p>Ce guide vous permet de mettre en route QuickSERVER et de créer votre premier client en quelques minutes.</p>
+<h2 id="prérequis">Prérequis</h2>
 <ul>
 <li>Windows 10/11 (x86 ou x64)</li>
 <li>QuickSERVER 2.80 installé (via l'installeur ou compilation manuelle)</li>
 <li>Variable d'environnement <code>QT_HOME</code> pointant vers le répertoire d'installation</li>
 <li>Visual Studio 2015+ (pour compiler vos applications clientes)</li>
 </ul>
-<h2 id="1-verifier-linstallation">1. Vérifier l'installation</h2>
+<h2 id="1-vérifier-linstallation">1. Vérifier l'installation</h2>
 <p>Ouvrez un terminal et vérifiez que <code>QT_HOME</code> est défini :</p>
-<div class="highlight"><pre><span></span><code><span class="k">echo</span> <span class="nv">%QT_HOME%</span>
-</code></pre></div>
-
+<pre><code>echo %QT_HOME%</code></pre>
 <p>Le répertoire doit contenir :</p>
-<div class="highlight"><pre><span></span><code>%QT_HOME%\
+<pre><code>%QT_HOME%\
 ├── bin\          QuickServer.exe, QuickTIMER.exe, QuickActivator.exe, QuickSDB.exe
 ├── lib\          qt_util.lib, qt_server.lib, qt_sdb.lib, qt_dbengine.lib
 ├── include\      QT_std.h, QT_util.h, QT_socket.h, QT_sdb.h, ...
 ├── etc\          server.dat
-└── doc\          Documentation
-</code></pre></div>
-
+└── doc\          Documentation</code></pre>
 <h2 id="2-activer-la-licence">2. Activer la licence</h2>
-<h3 id="demarrage-rapide-sans-licence">Démarrage rapide (sans licence)</h3>
-<p>QuickSERVER démarre automatiquement en <strong>mode trial</strong> si aucune licence n'est activée.
-Le mode trial est limité à <strong>2 heures d'exécution continue</strong> — redémarrez le serveur pour reprendre.</p>
+<h3 id="démarrage-rapide-sans-licence">Démarrage rapide (sans licence)</h3>
+<p>QuickSERVER démarre automatiquement en <strong>mode trial</strong> si aucune licence n'est activée. Le mode trial est limité à <strong>2 heures d'exécution continue</strong> — redémarrez le serveur pour reprendre.</p>
 <h3 id="activer-une-licence">Activer une licence</h3>
 <p>Si vous disposez d'une clé de licence :</p>
-<div class="highlight"><pre><span></span><code>bin\QuickActivator.exe activate XXXX-XXXX-XXXX-XXXX
-</code></pre></div>
-
+<pre><code>bin\QuickActivator.exe activate XXXX-XXXX-XXXX-XXXX</code></pre>
 <h3 id="activer-hors-ligne-pc-sans-internet">Activer hors ligne (PC sans internet)</h3>
-<div class="highlight"><pre><span></span><code><span class="c1">REM 1. Tenter l&#39;activation (retient la clé même si pas de réseau)</span>
+<pre><code>REM 1. Tenter l&#39;activation (retient la clé même si pas de réseau)
 bin\QuickActivator.exe activate XXXX-XXXX-XXXX-XXXX
 
-<span class="c1">REM 2. Générer le fichier de requête</span>
+REM 2. Générer le fichier de requête
 bin\QuickActivator.exe offline-request request.dat
 
-<span class="c1">REM 3. Transférer request.dat sur un PC connecté, uploader sur le portail Cryptlex</span>
-<span class="c1">REM 4. Télécharger le fichier de réponse, le transférer sur le PC cible</span>
+REM 3. Transférer request.dat sur un PC connecté, uploader sur le portail Cryptlex
+REM 4. Télécharger le fichier de réponse, le transférer sur le PC cible
 
-<span class="c1">REM 5. Appliquer la réponse</span>
-bin\QuickActivator.exe offline-activate response.dat
-</code></pre></div>
-
+REM 5. Appliquer la réponse
+bin\QuickActivator.exe offline-activate response.dat</code></pre>
 <h3 id="activer-le-mode-trial">Activer le mode trial</h3>
 <p>Après l'installation, lancez le script d'activation trial (ou depuis le menu Démarrer) :</p>
-<div class="highlight"><pre><span></span><code>activate_trial.bat
-</code></pre></div>
-
+<pre><code>activate_trial.bat</code></pre>
 <p>Ou directement :</p>
-<div class="highlight"><pre><span></span><code>bin\QuickActivator.exe trial
-</code></pre></div>
-
+<pre><code>bin\QuickActivator.exe trial</code></pre>
 <p><strong>Deux modes de trial</strong> selon la connectivité :</p>
 <table>
-<thead>
-<tr>
+<thead><tr>
 <th>Mode</th>
 <th>Condition</th>
 <th>Durée</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr>
 <td><strong>Trial vérifié</strong></td>
@@ -483,219 +453,176 @@ bin\QuickActivator.exe offline-activate response.dat
 </tr>
 </tbody>
 </table>
-<p>La commande <code>QuickActivator.exe trial</code> détecte automatiquement la connectivité :
-- Si internet est disponible, elle active un trial vérifié via le serveur Cryptlex.
-- Si le PC est hors ligne, elle bascule automatiquement sur un trial local de 90 jours — <strong>aucune manipulation supplémentaire n'est nécessaire</strong>.</p>
-<p>Dans les deux cas, l'exécution du serveur est limitée à <strong>2 heures continues</strong> — redémarrez le serveur pour reprendre.
-Toutes les features (server, sdb) sont activées en mode trial.</p>
-<blockquote>
-<p><strong>Note :</strong> Le trial local est lié à la machine. Il ne peut être activé qu'une seule fois par machine (la date de début est mémorisée). Si le trial local de 90 jours expire, seule une licence payante ou une extension du trial permet de continuer.</p>
-</blockquote>
+<p>La commande <code>QuickActivator.exe trial</code> détecte automatiquement la connectivité :</p>
+<ul>
+<li>Si internet est disponible, elle active un trial vérifié via le serveur Cryptlex.</li>
+<li>Si le PC est hors ligne, elle bascule automatiquement sur un trial local de 90 jours — <strong>aucune manipulation supplémentaire n'est nécessaire</strong>.</li>
+</ul>
+<p>Dans les deux cas, l'exécution du serveur est limitée à <strong>2 heures continues</strong> — redémarrez le serveur pour reprendre. Toutes les features (server, sdb) sont activées en mode trial.</p>
+<p>> <strong>Note :</strong> Le trial local est lié à la machine. Il ne peut être activé qu'une seule fois par machine (la date de début est mémorisée). Si le trial local de 90 jours expire, seule une licence payante ou une extension du trial permet de continuer.</p>
 <h3 id="prolonger-un-trial-local-hors-ligne">Prolonger un trial local (hors ligne)</h3>
 <p>Si un utilisateur en trial local a besoin de plus de temps, vous pouvez prolonger sa période d'évaluation :</p>
-<div class="highlight"><pre><span></span><code>bin\QuickActivator.exe trial-extend 30
-</code></pre></div>
-
+<pre><code>bin\QuickActivator.exe trial-extend 30</code></pre>
 <p>Cette commande ajoute 30 jours supplémentaires au trial local en cours. Le nombre de jours est cumulatif — vous pouvez appeler la commande plusieurs fois. <strong>Un redémarrage de QuickSERVER est nécessaire</strong> pour que la prolongation prenne effet.</p>
-<blockquote>
-<p><strong>Note :</strong> Cette commande ne fonctionne que pour les trials locaux (hors ligne). Les trials vérifiés (en ligne) sont gérés par le serveur Cryptlex et ne peuvent pas être prolongés localement. La prolongation ne réinitialise pas la limite de 2 heures par session — elle étend uniquement la durée calendaire du trial.</p>
-</blockquote>
-<h3 id="verifier-le-statut">Vérifier le statut</h3>
-<div class="highlight"><pre><span></span><code>bin\QuickActivator.exe status
-</code></pre></div>
-
-<h3 id="desactiver-la-licence">Désactiver la licence</h3>
+<p>> <strong>Note :</strong> Cette commande ne fonctionne que pour les trials locaux (hors ligne). Les trials vérifiés (en ligne) sont gérés par le serveur Cryptlex et ne peuvent pas être prolongés localement. La prolongation ne réinitialise pas la limite de 2 heures par session — elle étend uniquement la durée calendaire du trial.</p>
+<h3 id="vérifier-le-statut">Vérifier le statut</h3>
+<pre><code>bin\QuickActivator.exe status</code></pre>
+<h3 id="désactiver-la-licence">Désactiver la licence</h3>
 <p>Pour libérer la licence de ce PC (par exemple avant un changement de machine) :</p>
-<div class="highlight"><pre><span></span><code>bin\QuickActivator.exe deactivate
-</code></pre></div>
-
-<h3 id="transferer-une-licence-vers-un-autre-pc">Transférer une licence vers un autre PC</h3>
+<pre><code>bin\QuickActivator.exe deactivate</code></pre>
+<h3 id="transférer-une-licence-vers-un-autre-pc">Transférer une licence vers un autre PC</h3>
 <p>Pour déménager votre licence d'une machine à une autre :</p>
 <ol>
-<li>
-<p><strong>Sur l'ancien PC</strong> — désactivez la licence pour libérer le slot d'activation :
-   <code>batch
-   bin\QuickActivator.exe deactivate</code></p>
-</li>
-<li>
-<p><strong>Sur le nouveau PC</strong> — activez la même clé de licence :
-   <code>batch
-   bin\QuickActivator.exe activate XXXX-XXXX-XXXX-XXXX</code></p>
-</li>
+<li><strong>Sur l'ancien PC</strong> — désactivez la licence pour libérer le slot d'activation :</li>
+<pre><code>   bin\QuickActivator.exe deactivate</code></pre>
+</ol>
+<ol>
+<li><strong>Sur le nouveau PC</strong> — activez la même clé de licence :</li>
+<pre><code>   bin\QuickActivator.exe activate XXXX-XXXX-XXXX-XXXX</code></pre>
 </ol>
 <h4 id="cas-1-lancien-pc-est-hors-ligne-le-nouveau-pc-est-en-ligne">Cas 1 : L'ancien PC est hors ligne, le nouveau PC est en ligne</h4>
 <ol>
-<li>
-<p><strong>Sur l'ancien PC (hors ligne)</strong> — générez un fichier de requête de désactivation :
-   <code>batch
-   bin\QuickActivator.exe offline-deactivate deactivation_request.dat</code></p>
-</li>
-<li>
-<p><strong>Transférez</strong> le fichier <code>deactivation_request.dat</code> vers un PC connecté (clé USB, réseau interne).</p>
-</li>
-<li>
-<p><strong>Sur le PC connecté</strong> — uploadez le fichier sur le portail client Cryptlex pour finaliser la désactivation.</p>
-</li>
-<li>
-<p><strong>Sur le nouveau PC (en ligne)</strong> — activez la licence :
-   <code>batch
-   bin\QuickActivator.exe activate XXXX-XXXX-XXXX-XXXX</code></p>
-</li>
+<li><strong>Sur l'ancien PC (hors ligne)</strong> — générez un fichier de requête de désactivation :</li>
+<pre><code>   bin\QuickActivator.exe offline-deactivate deactivation_request.dat</code></pre>
+</ol>
+<ol>
+<li><strong>Transférez</strong> le fichier <code>deactivation_request.dat</code> vers un PC connecté (clé USB, réseau interne).</li>
+</ol>
+<ol>
+<li><strong>Sur le PC connecté</strong> — uploadez le fichier sur le portail client Cryptlex pour finaliser la désactivation.</li>
+</ol>
+<ol>
+<li><strong>Sur le nouveau PC (en ligne)</strong> — activez la licence :</li>
+<pre><code>   bin\QuickActivator.exe activate XXXX-XXXX-XXXX-XXXX</code></pre>
 </ol>
 <h4 id="cas-2-les-deux-pc-sont-hors-ligne">Cas 2 : Les deux PC sont hors ligne</h4>
 <ol>
-<li>
-<p><strong>Sur l'ancien PC (hors ligne)</strong> — générez la requête de désactivation :
-   <code>batch
-   bin\QuickActivator.exe offline-deactivate deactivation_request.dat</code></p>
-</li>
-<li>
-<p><strong>Transférez</strong> <code>deactivation_request.dat</code> vers un PC connecté et uploadez-le sur le portail Cryptlex.</p>
-</li>
-<li>
-<p><strong>Sur le nouveau PC (hors ligne)</strong> — enregistrez la clé de licence :
-   <code>batch
-   bin\QuickActivator.exe activate XXXX-XXXX-XXXX-XXXX</code>
-   L'activation en ligne échoue, mais la clé est mémorisée.</p>
-</li>
-<li>
-<p><strong>Sur le nouveau PC (hors ligne)</strong> — générez la requête d'activation :
-   <code>batch
-   bin\QuickActivator.exe offline-request activation_request.dat</code></p>
-</li>
-<li>
-<p><strong>Transférez</strong> <code>activation_request.dat</code> vers un PC connecté, uploadez-le sur le portail Cryptlex, et téléchargez le fichier de réponse <code>activation_response.dat</code>.</p>
-</li>
-<li>
-<p><strong>Transférez</strong> <code>activation_response.dat</code> vers le nouveau PC.</p>
-</li>
-<li>
-<p><strong>Sur le nouveau PC (hors ligne)</strong> — appliquez la réponse :
-   <code>batch
-   bin\QuickActivator.exe offline-activate activation_response.dat</code></p>
-</li>
-<li>
-<p>Vérifiez l'activation :
-   <code>batch
-   bin\QuickActivator.exe status</code></p>
-</li>
+<li><strong>Sur l'ancien PC (hors ligne)</strong> — générez la requête de désactivation :</li>
+<pre><code>   bin\QuickActivator.exe offline-deactivate deactivation_request.dat</code></pre>
 </ol>
-<blockquote>
-<p><strong>Note :</strong> Chaque clé de licence a un nombre limité d'activations simultanées. La désactivation libère un slot, permettant d'activer la licence sur une autre machine.</p>
-</blockquote>
-<h2 id="3-demarrer-quickserver">3. Démarrer QuickSERVER</h2>
-<div class="highlight"><pre><span></span><code>bin\QuickServer.exe
-</code></pre></div>
-
+<ol>
+<li><strong>Transférez</strong> <code>deactivation_request.dat</code> vers un PC connecté et uploadez-le sur le portail Cryptlex.</li>
+</ol>
+<ol>
+<li><strong>Sur le nouveau PC (hors ligne)</strong> — enregistrez la clé de licence :</li>
+<pre><code>   bin\QuickActivator.exe activate XXXX-XXXX-XXXX-XXXX</code></pre>
+</ol>
+<p>L'activation en ligne échoue, mais la clé est mémorisée.</p>
+<ol>
+<li><strong>Sur le nouveau PC (hors ligne)</strong> — générez la requête d'activation :</li>
+<pre><code>   bin\QuickActivator.exe offline-request activation_request.dat</code></pre>
+</ol>
+<ol>
+<li><strong>Transférez</strong> <code>activation<em>request.dat</code> vers un PC connecté, uploadez-le sur le portail Cryptlex, et téléchargez le fichier de réponse <code>activation</em>response.dat</code>.</li>
+</ol>
+<ol>
+<li><strong>Transférez</strong> <code>activation_response.dat</code> vers le nouveau PC.</li>
+</ol>
+<ol>
+<li><strong>Sur le nouveau PC (hors ligne)</strong> — appliquez la réponse :</li>
+<pre><code>   bin\QuickActivator.exe offline-activate activation_response.dat</code></pre>
+</ol>
+<ol>
+<li>Vérifiez l'activation :</li>
+<pre><code>   bin\QuickActivator.exe status</code></pre>
+</ol>
+<p>> <strong>Note :</strong> Chaque clé de licence a un nombre limité d'activations simultanées. La désactivation libère un slot, permettant d'activer la licence sur une autre machine.</p>
+<h2 id="3-démarrer-quickserver">3. Démarrer QuickSERVER</h2>
+<pre><code>bin\QuickServer.exe</code></pre>
 <p>Ou utilisez le script de lancement :</p>
-<div class="highlight"><pre><span></span><code>run_quickserver.bat
-</code></pre></div>
-
-<p>Le serveur démarre sur le port <strong>1250</strong> par défaut. Le dashboard HTTP est accessible
-sur le port <strong>1251</strong> :</p>
-<div class="highlight"><pre><span></span><code>http://localhost:1251
-</code></pre></div>
-
+<pre><code>run_quickserver.bat</code></pre>
+<p>Le serveur démarre sur le port <strong>1250</strong> par défaut. Le dashboard HTTP est accessible sur le port <strong>1251</strong> :</p>
+<pre><code>http://localhost:1251</code></pre>
 <h2 id="4-diagnostic">4. Diagnostic</h2>
 <p>En cas de problème, utilisez le script de diagnostic :</p>
-<div class="highlight"><pre><span></span><code>diagnose_quickserver.bat
-</code></pre></div>
-
-<p>Il vérifie : la variable <code>QT_HOME</code>, les ports réseau (1250, 1251, 1252) et les
-permissions.</p>
+<pre><code>diagnose_quickserver.bat</code></pre>
+<p>Il vérifie : la variable <code>QT_HOME</code>, les ports réseau (1250, 1251, 1252) et les permissions.</p>
 <h2 id="5-premier-client-envoi-de-messages">5. Premier client — Envoi de messages</h2>
 <p>Créez un fichier <code>sender.c</code> :</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;QT_std.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;QT_socket.h&quot;</span>
+<pre><code>#include &quot;QT_std.h&quot;
+#include &quot;QT_socket.h&quot;
 
-<span class="cp">#define MSG_HELLO 1001</span>
+#define MSG_HELLO 1001
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">QT_Init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+int main(int argc, char *argv[])
+{
+    QT_Init(argc, argv);
 
-<span class="w">    </span><span class="cm">/* Se connecter au serveur local */</span>
-<span class="w">    </span><span class="n">QT_SocketInit</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;mon_sender&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">C_AUTO_RECONNECTION</span><span class="p">);</span>
+    /* Se connecter au serveur local */
+    QT_SocketInit(&quot;localhost&quot;, &quot;mon_sender&quot;, C_AUTO_RECONNECTION);
 
-<span class="w">    </span><span class="cm">/* Rejoindre un datagroup */</span>
-<span class="w">    </span><span class="n">T_DATAGROUP</span><span class="w"> </span><span class="n">dg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QT_SocketJoinDG</span><span class="p">(</span><span class="s">&quot;MON_CANAL&quot;</span><span class="p">);</span>
+    /* Rejoindre un datagroup */
+    T_DATAGROUP dg = QT_SocketJoinDG(&quot;MON_CANAL&quot;);
 
-<span class="w">    </span><span class="cm">/* Créer un message */</span>
-<span class="w">    </span><span class="n">T_MESSAGE</span><span class="w"> </span><span class="o">*</span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QT_SocketCreateMsg</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">4096</span><span class="p">);</span>
-<span class="w">    </span><span class="n">msg</span><span class="o">-&gt;</span><span class="n">Header</span><span class="p">.</span><span class="n">Type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MSG_HELLO</span><span class="p">;</span>
+    /* Créer un message */
+    T_MESSAGE *msg = QT_SocketCreateMsg(NULL, NULL, 4096);
+    msg-&gt;Header.Type = MSG_HELLO;
 
-<span class="w">    </span><span class="cm">/* Écrire des données typées */</span>
-<span class="w">    </span><span class="n">QT_SocketWriteMsgString</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Bonjour depuis le sender!&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">QT_SocketWriteMsgDouble</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="mf">3.14159</span><span class="p">);</span>
-<span class="w">    </span><span class="n">QT_SocketWriteMsgLong</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">);</span>
+    /* Écrire des données typées */
+    QT_SocketWriteMsgString(msg, &quot;Bonjour depuis le sender!&quot;);
+    QT_SocketWriteMsgDouble(msg, 3.14159);
+    QT_SocketWriteMsgLong(msg, 42);
 
-<span class="w">    </span><span class="cm">/* Envoyer */</span>
-<span class="w">    </span><span class="n">QT_SocketSendMsg</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="n">dg</span><span class="p">);</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Message envoye!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    /* Envoyer */
+    QT_SocketSendMsg(msg, dg);
+    printf(&quot;Message envoye!\n&quot;);
 
-<span class="w">    </span><span class="cm">/* Nettoyer */</span>
-<span class="w">    </span><span class="n">QT_SocketDestroyMsg</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
-<span class="w">    </span><span class="n">QT_SocketTerminate</span><span class="p">();</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<h2 id="6-premier-client-reception-de-messages">6. Premier client — Réception de messages</h2>
+    /* Nettoyer */
+    QT_SocketDestroyMsg(msg);
+    QT_SocketTerminate();
+    return 0;
+}</code></pre>
+<h2 id="6-premier-client-réception-de-messages">6. Premier client — Réception de messages</h2>
 <p>Créez un fichier <code>receiver.c</code> :</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;QT_std.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;QT_socket.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<pre><code>#include &quot;QT_std.h&quot;
+#include &quot;QT_socket.h&quot;
+#include &lt;stdio.h&gt;
 
-<span class="cp">#define MSG_HELLO 1001</span>
+#define MSG_HELLO 1001
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">QT_Init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+int main(int argc, char *argv[])
+{
+    QT_Init(argc, argv);
 
-<span class="w">    </span><span class="cm">/* Se connecter */</span>
-<span class="w">    </span><span class="n">QT_SocketInit</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;mon_receiver&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">C_AUTO_RECONNECTION</span><span class="p">);</span>
+    /* Se connecter */
+    QT_SocketInit(&quot;localhost&quot;, &quot;mon_receiver&quot;, C_AUTO_RECONNECTION);
 
-<span class="w">    </span><span class="cm">/* Rejoindre le même datagroup */</span>
-<span class="w">    </span><span class="n">T_DATAGROUP</span><span class="w"> </span><span class="n">dg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QT_SocketJoinDG</span><span class="p">(</span><span class="s">&quot;MON_CANAL&quot;</span><span class="p">);</span>
+    /* Rejoindre le même datagroup */
+    T_DATAGROUP dg = QT_SocketJoinDG(&quot;MON_CANAL&quot;);
 
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;En attente de messages...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    printf(&quot;En attente de messages...\n&quot;);
 
-<span class="w">    </span><span class="cm">/* Boucle de réception */</span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">T_MESSAGE</span><span class="w"> </span><span class="o">*</span><span class="n">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QT_SocketWaitMsg</span><span class="p">(</span><span class="n">MSG_HELLO</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">texte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">QT_SocketReadMsgString</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
-<span class="w">            </span><span class="kt">double</span><span class="w"> </span><span class="n">valeur</span><span class="p">;</span>
-<span class="w">            </span><span class="kt">long</span><span class="w"> </span><span class="n">entier</span><span class="p">;</span>
-<span class="w">            </span><span class="n">QT_SocketReadMsgDouble</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">valeur</span><span class="p">);</span>
-<span class="w">            </span><span class="n">QT_SocketReadMsgLong</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">entier</span><span class="p">);</span>
+    /* Boucle de réception */
+    while (1) {
+        T_MESSAGE *msg = QT_SocketWaitMsg(MSG_HELLO, 30);
+        if (msg) {
+            char *texte = QT_SocketReadMsgString(msg);
+            double valeur;
+            long entier;
+            QT_SocketReadMsgDouble(msg, &amp;valeur);
+            QT_SocketReadMsgLong(msg, &amp;entier);
 
-<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Recu: %s (%.5f, %ld)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">texte</span><span class="p">,</span><span class="w"> </span><span class="n">valeur</span><span class="p">,</span><span class="w"> </span><span class="n">entier</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Timeout - aucun message recu.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
+            printf(&quot;Recu: %s (%.5f, %ld)\n&quot;, texte, valeur, entier);
+        } else {
+            printf(&quot;Timeout - aucun message recu.\n&quot;);
+        }
+    }
 
-<span class="w">    </span><span class="n">QT_SocketTerminate</span><span class="p">();</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-
+    QT_SocketTerminate();
+    return 0;
+}</code></pre>
 <h2 id="7-compiler">7. Compiler</h2>
 <h3 id="avec-visual-studio-ligne-de-commande">Avec Visual Studio (ligne de commande)</h3>
-<div class="highlight"><pre><span></span><code><span class="c1">REM Initialiser l&#39;environnement Visual Studio</span>
-<span class="k">call</span> <span class="s2">&quot;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat&quot;</span> x86
+<pre><code>REM Initialiser l&#39;environnement Visual Studio
+call &quot;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat&quot; x86
 
-<span class="c1">REM Compiler le sender</span>
-cl /nologo /I<span class="s2">&quot;</span><span class="nv">%QT_HOME%</span><span class="s2">\include&quot;</span> sender.c /link /LIBPATH:<span class="s2">&quot;</span><span class="nv">%QT_HOME%</span><span class="s2">\lib&quot;</span> qt_server.lib qt_util.lib ws2_32.lib advapi32.lib
+REM Compiler le sender
+cl /nologo /I&quot;%QT_HOME%\include&quot; sender.c /link /LIBPATH:&quot;%QT_HOME%\lib&quot; qt_server.lib qt_util.lib ws2_32.lib advapi32.lib
 
-<span class="c1">REM Compiler le receiver</span>
-cl /nologo /I<span class="s2">&quot;</span><span class="nv">%QT_HOME%</span><span class="s2">\include&quot;</span> receiver.c /link /LIBPATH:<span class="s2">&quot;</span><span class="nv">%QT_HOME%</span><span class="s2">\lib&quot;</span> qt_server.lib qt_util.lib ws2_32.lib advapi32.lib
-</code></pre></div>
-
-<h3 id="avec-le-systeme-de-build-quicktools">Avec le système de build QuickTools</h3>
-<p>Placez vos sources dans le répertoire <code>tests/</code> et ajoutez un script de build
-dans <code>build_scripts/</code>.</p>
+REM Compiler le receiver
+cl /nologo /I&quot;%QT_HOME%\include&quot; receiver.c /link /LIBPATH:&quot;%QT_HOME%\lib&quot; qt_server.lib qt_util.lib ws2_32.lib advapi32.lib</code></pre>
+<h3 id="avec-le-système-de-build-quicktools">Avec le système de build QuickTools</h3>
+<p>Placez vos sources dans le répertoire <code>tests/</code> et ajoutez un script de build dans <code>build_scripts/</code>.</p>
 <h2 id="8-tester">8. Tester</h2>
 <ol>
 <li>Démarrez QuickSERVER dans un premier terminal</li>
@@ -703,108 +630,98 @@ dans <code>build_scripts/</code>.</p>
 <li>Lancez <code>sender.exe</code> dans un troisième terminal</li>
 </ol>
 <p>Le receiver affiche :</p>
-<div class="highlight"><pre><span></span><code>En attente de messages...
-Recu: Bonjour depuis le sender! (3.14159, 42)
-</code></pre></div>
+<pre><code>En attente de messages...
+Recu: Bonjour depuis le sender! (3.14159, 42)</code></pre>
+<h2 id="9-premier-client-sdb-variables-partagées">9. Premier client SDB — Variables partagées</h2>
+<pre><code>#include &quot;QT_std.h&quot;
+#include &quot;QT_socket.h&quot;
+#include &quot;QT_sdb.h&quot;
 
-<h2 id="9-premier-client-sdb-variables-partagees">9. Premier client SDB — Variables partagées</h2>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;QT_std.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;QT_socket.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;QT_sdb.h&quot;</span>
+void on_change(T_SDB inst, char *var, E_FIELD type,
+               T_FIELD_VALUE *val, void *arg)
+{
+    printf(&quot;  &gt;&gt; %s = %.2f\n&quot;, var, val-&gt;Float);
+}
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">on_change</span><span class="p">(</span><span class="n">T_SDB</span><span class="w"> </span><span class="n">inst</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">var</span><span class="p">,</span><span class="w"> </span><span class="n">E_FIELD</span><span class="w"> </span><span class="n">type</span><span class="p">,</span>
-<span class="w">               </span><span class="n">T_FIELD_VALUE</span><span class="w"> </span><span class="o">*</span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;  &gt;&gt; %s = %.2f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">var</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="o">-&gt;</span><span class="n">Float</span><span class="p">);</span>
-<span class="p">}</span>
+int main(int argc, char *argv[])
+{
+    QT_Init(argc, argv);
+    QT_SocketInit(&quot;localhost&quot;, &quot;client_sdb&quot;, C_AUTO_RECONNECTION);
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">QT_Init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
-<span class="w">    </span><span class="n">QT_SocketInit</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;client_sdb&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">C_AUTO_RECONNECTION</span><span class="p">);</span>
+    /* Se connecter à l&#39;instance SDB 1 */
+    QT_SdbConnect(&quot;localhost&quot;, 1);
+    QT_SdbReadStructure(1);
 
-<span class="w">    </span><span class="cm">/* Se connecter à l&#39;instance SDB 1 */</span>
-<span class="w">    </span><span class="n">QT_SdbConnect</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">    </span><span class="n">QT_SdbReadStructure</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    /* Créer une variable */
+    QT_SdbAddVariable(1, &quot;TEMPERATURE&quot;, C_DOUBLE, 0.0);
+    QT_SdbCommit(1);
 
-<span class="w">    </span><span class="cm">/* Créer une variable */</span>
-<span class="w">    </span><span class="n">QT_SdbAddVariable</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;TEMPERATURE&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">C_DOUBLE</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span>
-<span class="w">    </span><span class="n">QT_SdbCommit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    /* Surveiller les changements */
+    QT_SdbWatchVariable(1, &quot;TEMPERATURE&quot;, on_change, NULL);
 
-<span class="w">    </span><span class="cm">/* Surveiller les changements */</span>
-<span class="w">    </span><span class="n">QT_SdbWatchVariable</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;TEMPERATURE&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">on_change</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+    /* Modifier la valeur */
+    QT_SdbSetDouble(1, &quot;TEMPERATURE&quot;, 22.5);
+    QT_SdbCommit(1);
 
-<span class="w">    </span><span class="cm">/* Modifier la valeur */</span>
-<span class="w">    </span><span class="n">QT_SdbSetDouble</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;TEMPERATURE&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">22.5</span><span class="p">);</span>
-<span class="w">    </span><span class="n">QT_SdbCommit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    /* Attendre les notifications */
+    QT_SocketWaitMsg(0, 5);
 
-<span class="w">    </span><span class="cm">/* Attendre les notifications */</span>
-<span class="w">    </span><span class="n">QT_SocketWaitMsg</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">QT_SdbDisconnect</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">    </span><span class="n">QT_SocketTerminate</span><span class="p">();</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-
+    QT_SdbDisconnect(1);
+    QT_SocketTerminate();
+    return 0;
+}</code></pre>
 <p>Compilation :</p>
-<div class="highlight"><pre><span></span><code>cl /nologo /I<span class="s2">&quot;</span><span class="nv">%QT_HOME%</span><span class="s2">\include&quot;</span> sdb_client.c /link /LIBPATH:<span class="s2">&quot;</span><span class="nv">%QT_HOME%</span><span class="s2">\lib&quot;</span> qt_sdb.lib qt_server.lib qt_util.lib ws2_32.lib advapi32.lib
-</code></pre></div>
+<pre><code>cl /nologo /I&quot;%QT_HOME%\include&quot; sdb_client.c /link /LIBPATH:&quot;%QT_HOME%\lib&quot; qt_sdb.lib qt_server.lib qt_util.lib ws2_32.lib advapi32.lib</code></pre>
+<h2 id="10-premier-client-dbengine-accès-sql">10. Premier client DbEngine — Accès SQL</h2>
+<pre><code>#include &quot;QT_std.h&quot;
+#include &quot;QT_util.h&quot;
+#include &quot;Engine.h&quot;
 
-<h2 id="10-premier-client-dbengine-acces-sql">10. Premier client DbEngine — Accès SQL</h2>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;QT_std.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;QT_util.h&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Engine.h&quot;</span>
+int main(int argc, char *argv[])
+{
+    QT_Init(argc, argv);
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">QT_Init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+    /* Ouvrir une base SQLite */
+    T_SQL *db = Sql_Init(&quot;sqlite&quot;);
+    Sql_Connect(db, NULL, &quot;test.db&quot;, NULL, NULL);
 
-<span class="w">    </span><span class="cm">/* Ouvrir une base SQLite */</span>
-<span class="w">    </span><span class="n">T_SQL</span><span class="w"> </span><span class="o">*</span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sql_Init</span><span class="p">(</span><span class="s">&quot;sqlite&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Sql_Connect</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;test.db&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+    /* Créer une table */
+    Sql_Execute(db, &quot;CREATE TABLE IF NOT EXISTS capteurs &quot;
+                    &quot;(id INTEGER PRIMARY KEY, nom TEXT, valeur REAL)&quot;);
 
-<span class="w">    </span><span class="cm">/* Créer une table */</span>
-<span class="w">    </span><span class="n">Sql_Execute</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CREATE TABLE IF NOT EXISTS capteurs &quot;</span>
-<span class="w">                    </span><span class="s">&quot;(id INTEGER PRIMARY KEY, nom TEXT, valeur REAL)&quot;</span><span class="p">);</span>
+    /* Insérer des données */
+    Sql_Execute(db, &quot;INSERT INTO capteurs (nom, valeur) VALUES (&#39;%s&#39;, %f)&quot;,
+                Sql_String(db, &quot;Capteur Nord&quot;), 42.5);
 
-<span class="w">    </span><span class="cm">/* Insérer des données */</span>
-<span class="w">    </span><span class="n">Sql_Execute</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;INSERT INTO capteurs (nom, valeur) VALUES (&#39;%s&#39;, %f)&quot;</span><span class="p">,</span>
-<span class="w">                </span><span class="n">Sql_String</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Capteur Nord&quot;</span><span class="p">),</span><span class="w"> </span><span class="mf">42.5</span><span class="p">);</span>
+    /* Lire les données */
+    T_SQL_RESULT *r = Sql_Execute(db, &quot;SELECT * FROM capteurs&quot;);
+    while (Sql_Fetch(r)) {
+        T_SQL_FIELD *nom = Sql_GetField(r, &quot;nom&quot;, 0);
+        T_SQL_FIELD *val = Sql_GetField(r, &quot;valeur&quot;, 0);
+        printf(&quot;%s = %.1f\n&quot;, nom-&gt;Value.String, val-&gt;Value.Double);
+    }
+    Sql_FreeResult(r);
 
-<span class="w">    </span><span class="cm">/* Lire les données */</span>
-<span class="w">    </span><span class="n">T_SQL_RESULT</span><span class="w"> </span><span class="o">*</span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sql_Execute</span><span class="p">(</span><span class="n">db</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SELECT * FROM capteurs&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">Sql_Fetch</span><span class="p">(</span><span class="n">r</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">T_SQL_FIELD</span><span class="w"> </span><span class="o">*</span><span class="n">nom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sql_GetField</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">        </span><span class="n">T_SQL_FIELD</span><span class="w"> </span><span class="o">*</span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sql_GetField</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;valeur&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s = %.1f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nom</span><span class="o">-&gt;</span><span class="n">Value</span><span class="p">.</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="o">-&gt;</span><span class="n">Value</span><span class="p">.</span><span class="n">Double</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">Sql_FreeResult</span><span class="p">(</span><span class="n">r</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">Sql_Disconnect</span><span class="p">(</span><span class="n">db</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Sql_Close</span><span class="p">(</span><span class="n">db</span><span class="p">);</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-
+    Sql_Disconnect(db);
+    Sql_Close(db);
+    return 0;
+}</code></pre>
 <p>Compilation :</p>
-<div class="highlight"><pre><span></span><code>cl /nologo /I<span class="s2">&quot;</span><span class="nv">%QT_HOME%</span><span class="s2">\include&quot;</span> /DUSE_SQLITE sql_client.c /link /LIBPATH:<span class="s2">&quot;</span><span class="nv">%QT_HOME%</span><span class="s2">\lib&quot;</span> qt_dbengine.lib qt_util.lib
-</code></pre></div>
-
-<h2 id="etapes-suivantes">Étapes suivantes</h2>
+<pre><code>cl /nologo /I&quot;%QT_HOME%\include&quot; /DUSE_SQLITE sql_client.c /link /LIBPATH:&quot;%QT_HOME%\lib&quot; qt_dbengine.lib qt_util.lib</code></pre>
+<h2 id="étapes-suivantes">Étapes suivantes</h2>
 <ul>
-<li>Consultez la <a href="SERVER.html">documentation SERVER</a> pour les callbacks, le load balancing et les messages timer</li>
-<li>Consultez la <a href="SDB.html">documentation SDB</a> pour les classes, objets et formules</li>
-<li>Consultez la <a href="DbEngine.html">documentation DbEngine</a> pour les autres bases (MySQL, PostgreSQL, Oracle)</li>
-<li>Consultez la <a href="UTIL.html">documentation UTIL</a> pour les utilitaires (dates, INI, compression, structures de données)</li>
+<li>Consultez la <a href="SERVER.md">documentation SERVER</a> pour les callbacks, le load balancing et les messages timer</li>
+<li>Consultez la <a href="SDB.md">documentation SDB</a> pour les classes, objets et formules</li>
+<li>Consultez la <a href="DbEngine.md">documentation DbEngine</a> pour les autres bases (MySQL, PostgreSQL, Oracle)</li>
+<li>Consultez la <a href="UTIL.md">documentation UTIL</a> pour les utilitaires (dates, INI, compression, structures de données)</li>
 </ul>
-<hr />
+<hr>
 <p><em>QuickTOOLS 2.80 — Copyright (C) 1994-2026 Visuel Concept SAS</em></p>
         </main>
 
         <footer>
-            <p>QuickTOOLS 2.80 — Copyright © 1994-2026 Visuel Concept SAS</p>
-            <p>Generated on 2026-03-09</p>
+            <p>QuickTOOLS 2.80 — Copyright &copy; 1994-2026 Visuel Concept SAS</p>
+            <p>Généré le 2026-03-09</p>
             <p><a href="#top">Back to Top</a></p>
         </footer>
     </div>
